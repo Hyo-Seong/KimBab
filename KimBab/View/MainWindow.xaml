@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KimBab"
+        xmlns:ctrl="clr-namespace:KimBab.Controls"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized">
     <Grid>
@@ -18,7 +19,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>-->
-        <ListView x:Name="DataListView" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView x:Name="DataListView" SelectionChanged="DataListView_SelectionChanged" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>
@@ -41,5 +42,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Grid x:Name="gdMenuSelect">
+            <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed"/>
+        </Grid>
     </Grid>
 </Window>

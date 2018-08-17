@@ -1,4 +1,5 @@
 ﻿using KimBab.Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,6 +18,19 @@ namespace KimBab
             DataListView.ItemsSource = App.tableViewModel.Items;
             
             Debug.WriteLine(DataListView.ItemsSource);
+        }
+
+        private void DataListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Table data = (Table)DataListView.SelectedItem;
+            if(data != null)
+            {
+                MenuSelectControl.SetItemIndex(data.TableNum - 1);
+                MenuSelectControl.Visibility = Visibility.Visible;
+
+                Debug.WriteLine(data.TableNum);
+            }
+            
         }
     }
 }
