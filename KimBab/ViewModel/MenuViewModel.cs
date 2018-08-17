@@ -37,7 +37,7 @@ namespace KimBab.ViewModel
             Items.Add(new Menu { Name = "땡초김밥", Price = 2500, Type = FoodType.KIMBAB, Orders = 0 });
             Items.Add(new Menu { Name = "돈까스김밥", Price = 2500, Type = FoodType.KIMBAB, Orders = 0 });
             Items.Add(new Menu { Name = "떡볶이", Price = 3000, Type = FoodType.BUNSIK, Orders = 0 });
-            Items.Add(new Menu { Name = "스페셜떡볶이", Price = 4500, Type = FoodType.BUNSIK, Orders = 0 });
+            Items.Add(new Menu { Name = "라볶이", Price = 4500, Type = FoodType.BUNSIK, Orders = 0 });
             Items.Add(new Menu { Name = "떡만두국", Price = 4500, Type = FoodType.BUNSIK, Orders = 0 });
             Items.Add(new Menu { Name = "비빔만두", Price = 4500, Type = FoodType.BUNSIK, Orders = 0 });
             Items.Add(new Menu { Name = "제육덮밥", Price = 5000, Type = FoodType.SIKSA, Orders = 0 });
@@ -46,11 +46,11 @@ namespace KimBab.ViewModel
             Items.Add(new Menu { Name = "비빔밥", Price = 4500, Type = FoodType.SIKSA, Orders = 0 });
             Items.Add(new Menu { Name = "돌솥비빔밥", Price = 5000, Type = FoodType.SIKSA, Orders = 0 });
             Items.Add(new Menu { Name = "갈비탕", Price = 5500, Type = FoodType.SIKSA, Orders = 0 });
-            Items.Add(new Menu { Name = "육계장", Price = 5500, Type = FoodType.SIKSA, Orders = 0 });
+            Items.Add(new Menu { Name = "육개장", Price = 5500, Type = FoodType.SIKSA, Orders = 0 });
             Items.Add(new Menu { Name = "된장찌개", Price = 4500, Type = FoodType.SIKSA, Orders = 0 });
             Items.Add(new Menu { Name = "순두부찌개", Price = 4500, Type = FoodType.SIKSA, Orders = 0 });
             Items.Add(new Menu { Name = "참치찌개", Price = 4500, Type = FoodType.SIKSA, Orders = 0 });
-            Items.Add(new Menu { Name = "공기밥", Price = 1000, Type = FoodType.SIKSA, Orders = 0 });
+            Items.Add(new Menu { Name = "공깃밥", Price = 1000, Type = FoodType.SIKSA, Orders = 0 });
             Items.Add(new Menu { Name = "라면", Price = 3000, Type = FoodType.NOODLE, Orders = 0 });
             Items.Add(new Menu { Name = "짬뽕라면", Price = 4000, Type = FoodType.NOODLE, Orders = 0 });
             Items.Add(new Menu { Name = "우동", Price = 3000, Type = FoodType.NOODLE, Orders = 0 });
