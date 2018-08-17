@@ -18,7 +18,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>-->
-        <ListView x:Name="DataListView" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="DataListView_MouseDoubleClick">
+        <ListView x:Name="DataListView" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>
