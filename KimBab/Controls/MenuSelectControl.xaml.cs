@@ -36,6 +36,28 @@ namespace KimBab.Controls
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
+            var element = (FrameworkElement)sender;
+            switch (element.Name)
+            {
+                case "KimbabBtn":
+                    MenuList.ItemsSource = App.menuViewModel.Items;
+                    break;
+                case "NoodleBtn":
+
+                    break;
+                case "SiksaBtn":
+
+                    break;
+                case "BunsikBtn":
+
+                    break;
+                case "DongasBtn":
+
+                    break;
+                default:
+                    Debug.WriteLine("ERROR!");
+                    break;
+            }
         }
     }
 }
