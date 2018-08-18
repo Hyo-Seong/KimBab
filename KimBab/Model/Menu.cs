@@ -33,6 +33,7 @@ namespace KimBab.Model
                 name = value;
                 imagePath = @"image/" + name + ".jpg";
                 NotifyPropertyChanged("Name");
+                NotifyPropertyChanged("ImagePath");
             }
         }
 

@@ -40,18 +40,16 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" Opacity="0.5" BorderThickness="1" CornerRadius="1">
-                            <Grid Width="300" Height="300">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="30"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Text="{Binding TableNum}" Grid.Row="0" FontWeight="Bold" />
-                                <TextBlock Text="{Binding Menu}" Grid.Row="1" FontWeight="Bold" />
-                                <TextBlock Text="{Binding TotalPrice}" Grid.Row="2" FontWeight="Bold" />
-                            </Grid>
-                        </Border>
+                        <Grid Width="50" Height="50">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding ImagePath}"/>
+                            <TextBlock Text="{Binding Name}" Grid.Row="0" FontWeight="Bold" />
+                            <TextBlock Text="{Binding Price}" Grid.Row="1" FontWeight="Bold" />
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
