@@ -4,15 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KimBab.Controls"
-        d:DesignHeight="800" d:DesignWidth="1000"
+        d:DesignHeight="1080" d:DesignWidth="1920"
         mc:Ignorable="d">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0" HorizontalAlignment="Left" Height="800" Width="500" VerticalAlignment="Top">
+        <ListView Grid.Column="0" HorizontalAlignment="Left" Height="900" Width="960" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -21,18 +21,18 @@
         </ListView>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Button x:Name="AllBtn" Click="Menu_Click" FontSize="25" Content="전체" Width="90" Height="50" Margin="5,0,0,0"/>
-                <Button x:Name="KimbabBtn" Click="Menu_Click" FontSize="25" Width="90" Content="김밥" Height="50" Margin="10,0,0,0"/>
-                <Button x:Name="NoodleBtn" Click="Menu_Click" FontSize="25" Width="90" Content="면" Height="50" Margin="10,0,0,0"/>
-                <Button x:Name="SiksaBtn" Click="Menu_Click" FontSize="25" Width="90" Content="식사" Height="50" Margin="10,0,0,0"/>
-                <Button x:Name="BunsikBtn" Click="Menu_Click" FontSize="25" Width="90" Content="분식" Height="50" Margin="10,0,0,0"/>
-                <Button x:Name="DongasBtn" Click="Menu_Click" FontSize="25" Width="90" Content="돈가스" Height="50" Margin="10,0,0,0"/>
+                <Button x:Name="AllBtn" Click="Menu_Click" FontSize="25" Content="전체" Width="140" Height="70" Margin="20,0,0,0"/>
+                <Button x:Name="KimbabBtn" Click="Menu_Click" FontSize="25" Width="140" Content="김밥" Height="70" Margin="15,0,0,0"/>
+                <Button x:Name="NoodleBtn" Click="Menu_Click" FontSize="25" Width="140" Content="면" Height="70" Margin="15,0,0,0"/>
+                <Button x:Name="SiksaBtn" Click="Menu_Click" FontSize="25" Width="140" Content="식사" Height="70" Margin="15,0,0,0"/>
+                <Button x:Name="BunsikBtn" Click="Menu_Click" FontSize="25" Width="140" Content="분식" Height="70" Margin="15,0,0,0"/>
+                <Button x:Name="DongasBtn" Click="Menu_Click" FontSize="25" Width="140" Content="돈가스" Height="70" Margin="15,0,0,0"/>
             </StackPanel>
-            <ListView x:Name="MenuList" Grid.Row="1" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="600">
+            <ListView x:Name="MenuList" Grid.Row="1" HorizontalAlignment="Left" Height="790" VerticalAlignment="Top" Width="960">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"/>
