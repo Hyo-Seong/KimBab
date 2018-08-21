@@ -8,17 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized">
     <Grid>
-        <!--<ListBox x:Name="DataListBox" Margin="77,55,97,74" SelectionMode="Single">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
-                        <Rectangle Width="30" Fill="{Binding Price}"/>
-                        <TextBlock Width="130" Text="{Binding Name}"/>
-                        <TextBlock Width="70" Text="{Binding Type}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
         <ListView x:Name="DataListView" SelectionChanged="DataListView_SelectionChanged" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

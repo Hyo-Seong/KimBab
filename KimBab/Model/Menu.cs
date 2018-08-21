@@ -31,13 +31,21 @@ namespace KimBab.Model
             set
             {
                 name = value;
-                imagePath = @"image/" + name + ".jpg";
+                image = @Environment.CurrentDirectory + "/image/" + name + ".jpg";
                 NotifyPropertyChanged("Name");
-                NotifyPropertyChanged("ImagePath");
+                NotifyPropertyChanged("Image");
             }
         }
 
-        private string imagePath;
+        private string image;
+        public string Image
+        {
+            get => image;
+            set
+            {
+                image = value;
+            }
+        }
 
         private int price;
         public int Price

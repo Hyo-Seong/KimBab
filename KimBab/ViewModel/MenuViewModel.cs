@@ -14,6 +14,8 @@ namespace KimBab.ViewModel
         public MenuViewModel()
         {
             Items = new ObservableCollection<Menu>();
+            LoadData();
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
