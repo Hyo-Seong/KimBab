@@ -48,15 +48,17 @@
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="200" Height="100">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="30"/>
-                                </Grid.RowDefinitions>
-                                <Image Source="{Binding Image}" Grid.Row="1"/>
-                                <!--<TextBlock Text="{Binding Image}" Grid.Row="0" FontWeight="Bold" />
-                                <TextBlock Text="{Binding Price}" Grid.Row="2" FontWeight="Bold" />-->
+                            <Grid Width="350" Height="350">
+                                <Image Height="350" Width="350" Source="{Binding Image}"/>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Name}" Grid.Row="0" FontWeight="Bold" />
+                                    <TextBlock Text="{Binding Price}" Grid.Row="2" FontWeight="Bold" />
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
