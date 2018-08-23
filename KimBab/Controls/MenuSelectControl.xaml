@@ -26,6 +26,13 @@
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -49,7 +56,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="350" Height="350">
-                                <Image Height="350" Width="350" Source="{Binding Image}"/>
+                                <Image Stretch="Fill" Height="350" Width="350" Source="{Binding Image}"/>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="30"/>
