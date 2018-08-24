@@ -49,12 +49,19 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\LoadingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\MenuSelectControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -66,6 +73,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\LoadingControl.xaml.cs">
+      <DependentUpon>LoadingControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MenuSelectControl.xaml.cs">
       <DependentUpon>MenuSelectControl.xaml</DependentUpon>
@@ -97,6 +107,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +116,38 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="resource\gif\loadingbar.gif" />
+    <Resource Include="resource\menu\갈비탕.jpg" />
+    <Resource Include="resource\menu\고구마돈까스.jpg" />
+    <Resource Include="resource\menu\공깃밥.jpg" />
+    <Resource Include="resource\menu\김밥.jpg" />
+    <Resource Include="resource\menu\김치덮밥.jpg" />
+    <Resource Include="resource\menu\돈까스.jpg" />
+    <Resource Include="resource\menu\돈까스김밥.jpg" />
+    <Resource Include="resource\menu\돌솥비빔밥.jpg" />
+    <Resource Include="resource\menu\된장찌개.jpg" />
+    <Resource Include="resource\menu\땡초김밥.JPG" />
+    <Resource Include="resource\menu\떡만두국.jpg" />
+    <Resource Include="resource\menu\떡볶이.jpg" />
+    <Resource Include="resource\menu\라면.jpg" />
+    <Resource Include="resource\menu\라볶이.jpg" />
+    <Resource Include="resource\menu\비빔국수.JPG" />
+    <Resource Include="resource\menu\비빔만두.jpg" />
+    <Resource Include="resource\menu\비빔밥.jpg" />
+    <Resource Include="resource\menu\쇠고기덮밥.JPG" />
+    <Resource Include="resource\menu\순두부찌개.JPG" />
+    <Resource Include="resource\menu\우동.jpg" />
+    <Resource Include="resource\menu\육개장.jpg" />
+    <Resource Include="resource\menu\잔치국수.jpg" />
+    <Resource Include="resource\menu\제육덮밥.jpg" />
+    <Resource Include="resource\menu\짬뽕라면.jpg" />
+    <Resource Include="resource\menu\쫄면.jpg" />
+    <Resource Include="resource\menu\참치김밥.jpg" />
+    <Resource Include="resource\menu\참치찌개.JPG" />
+    <Resource Include="resource\menu\치즈김밥.jpg" />
+    <Resource Include="resource\menu\치즈돈까스.jpg" />
+    <Resource Include="resource\menu\칼국수.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

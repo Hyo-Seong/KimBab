@@ -31,7 +31,7 @@ namespace KimBab.Model
             set
             {
                 name = value;
-                image = @Environment.CurrentDirectory + "/image/" + name + ".jpg";
+                image =  @"../resource/menu/" + name + ".jpg";
                 NotifyPropertyChanged("Name");
                 NotifyPropertyChanged("Image");
             }
