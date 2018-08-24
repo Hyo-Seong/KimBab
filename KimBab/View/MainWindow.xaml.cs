@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace KimBab
 {
@@ -17,7 +18,6 @@ namespace KimBab
             InitializeComponent();
             DataListView.ItemsSource = App.tableViewModel.Items;
             
-            Debug.WriteLine(DataListView.ItemsSource);
         }
 
         private void DataListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

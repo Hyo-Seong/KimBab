@@ -35,5 +35,9 @@
         <Grid x:Name="gdMenuSelect">
             <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed"/>
         </Grid>
+
+        <Grid x:Name="gdLoading">
+            <ctrl:LoadingControl x:Name="LoadingControl" Visibility="Visible"/>
+        </Grid>
     </Grid>
 </Window>
