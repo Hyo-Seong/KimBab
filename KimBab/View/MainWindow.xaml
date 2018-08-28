@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:KimBab"
         xmlns:ctrl="clr-namespace:KimBab.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized">
+        Title="MainWindow" Width="1920" Height="1080" WindowState="Maximized">
     <Grid>
-        <ListView x:Name="DataListView" SelectionChanged="DataListView_SelectionChanged" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView x:Name="DataListView" Height="930" SelectionChanged="DataListView_SelectionChanged" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Bottom">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>
@@ -36,6 +36,10 @@
             <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed"/>
         </Grid>
 
+        <Grid x:Name="gdTime">
+            <ctrl:TimeControl x:Name="TimeControl" Visibility="Visible"/>
+        </Grid>
+        
         <Grid x:Name="gdLoading">
             <ctrl:LoadingControl x:Name="LoadingControl" Visibility="Visible"/>
         </Grid>

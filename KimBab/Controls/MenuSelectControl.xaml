@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KimBab.Controls"
         d:DesignHeight="1080" d:DesignWidth="1920"
         mc:Ignorable="d">
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="9*"/>
@@ -55,8 +55,8 @@
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="350" Height="350">
-                                <Image Stretch="Fill" Height="350" Width="350" Source="{Binding Image}"/>
+                            <Grid Width="450" Height="250">
+                                <Image Stretch="Fill" Source="{Binding Image}"/>
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="30"/>

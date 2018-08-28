@@ -1,7 +1,5 @@
 ﻿using KimBab.Model;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
@@ -17,20 +15,23 @@ namespace KimBab
         {
             InitializeComponent();
             DataListView.ItemsSource = App.tableViewModel.Items;
-            
+        }
+
+        private void SetLoginProgressRing(bool isActive)
+        {
+            LoadingControl.Visibility = isActive ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void DataListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             Table data = (Table)DataListView.SelectedItem;
-            if(data != null)
+            if (data != null)
             {
                 MenuSelectControl.SetItemIndex(data.TableNum - 1);
                 MenuSelectControl.Visibility = Visibility.Visible;
 
                 Debug.WriteLine(data.TableNum);
             }
-            
         }
     }
 }

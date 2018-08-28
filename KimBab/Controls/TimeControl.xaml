@@ -1,13 +1,12 @@
-﻿<UserControl x:Class="KimBab.Controls.LoadingControl"
+﻿<UserControl x:Class="KimBab.Controls.TimeControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KimBab.Controls"
-             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1920" Background="white">
+             d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid>
-        <Image x:Name="GifImage" Height="300" Width="300" gif:ImageBehavior.AnimatedSource="pack://application:,,,/resource/gif/loadingbar.gif"/>
+        <TextBlock TextAlignment="Right" FontSize="50" x:Name="TimeTextBlock" Height="150" Width="1000" HorizontalAlignment="Right" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="0,0,20,0"/>
     </Grid>
 </UserControl>
