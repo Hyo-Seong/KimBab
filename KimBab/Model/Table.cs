@@ -49,6 +49,7 @@ namespace KimBab.Model
         public Table(int TableNum)
         {
             tableNum = TableNum;
+            menu = new List<Menu>();
         }
     }
 }

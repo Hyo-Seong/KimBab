@@ -17,11 +17,6 @@ namespace KimBab
             DataListView.ItemsSource = App.tableViewModel.Items;
         }
 
-        private void SetLoginProgressRing(bool isActive)
-        {
-            LoadingControl.Visibility = isActive ? Visibility.Visible : Visibility.Collapsed;
-        }
-
         private void DataListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             Table data = (Table)DataListView.SelectedItem;
@@ -32,6 +27,11 @@ namespace KimBab
 
                 Debug.WriteLine(data.TableNum);
             }
+        }
+
+        private void LoadingControl_LoadingEndRecieved()
+        {
+            LoadingControl.Visibility = Visibility.Collapsed;
         }
     }
 }

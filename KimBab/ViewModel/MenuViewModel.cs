@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace KimBab.ViewModel
 {
@@ -27,8 +28,14 @@ namespace KimBab.ViewModel
 
         public void AddMenu(Menu menu)
         {
-            //Items.Add(menu);
-            Items.Add(menu);
+            try
+            {
+                int index = Items.IndexOf(menu);
+                Items[index].Orders++;
+            } catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+            }
         }
 
         public void LoadData()

@@ -24,6 +24,7 @@ namespace KimBab.Controls
         {
             InitializeComponent();
             MenuList.ItemsSource = App.menuViewModel.Items;
+            PaymentListView.ItemsSource = App.tableViewModel.Items[index].Menu;
         }
 
         private int index;
@@ -71,6 +72,12 @@ namespace KimBab.Controls
                 }
             }
             MenuList.ItemsSource = menus;
+        }
+
+        private void MenuList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Menu menu = MenuList.SelectedItem as Menu;
+            App.tableViewModel.OrderMenu(index, menu);
         }
     }
 }

@@ -124,7 +124,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resource\gif\loadingbar.gif" />
     <Resource Include="resource\menu\갈비탕.jpg" />
     <Resource Include="resource\menu\고구마돈까스.jpg" />
     <Resource Include="resource\menu\공깃밥.jpg" />
@@ -155,6 +154,9 @@
     <Resource Include="resource\menu\치즈김밥.jpg" />
     <Resource Include="resource\menu\치즈돈까스.jpg" />
     <Resource Include="resource\menu\칼국수.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\gif\loadingbar.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

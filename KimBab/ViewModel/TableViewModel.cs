@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace KimBab.ViewModel
 {
@@ -22,6 +23,27 @@ namespace KimBab.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     
+        public void OrderMenu(int index, Menu menu)
+        {
+            try
+            {
+                for(int i=0; i<Items[index].Menu.Count; i++)
+                {
+                    if (Items[index].Menu[i].Name.Equals(menu.Name))
+                    {
+                        Items[index].Menu[i].Orders++;
+                        Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
+                        return;
+                    }
+                }
+                Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
+                Items[index].Menu.Add(menu);
+            } catch
+            {
+                Debug.WriteLine("2 " + menu.Name + " " + menu.Orders);
+                Items[index].Menu.Add(menu);
+            }
+        }
 
         public void LoadData()
         {
