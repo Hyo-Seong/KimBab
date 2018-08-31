@@ -20,13 +20,13 @@
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-
-            <ListView x:Name="PaymentListView" FontSize="36" Grid.Column="0" HorizontalAlignment="Left" Height="382" Width="960" VerticalAlignment="Bottom" Margin="0,0,0,134">
+            <Button x:Name="GoBackBtn" Grid.Column="0" Width="140" Height="60" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Click="GoBackBtn_Click"/>
+            <ListView x:Name="PaymentListView" FontSize="36" Grid.Column="0" HorizontalAlignment="Left" Height="382" Width="960" VerticalAlignment="Bottom" Margin="0,0,0,106">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn  Header="상품명" Width="400" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="수량" Width="250" DisplayMemberBinding="{Binding Orders}"/>
-                        <GridViewColumn Header="금액" Width="310" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="금액" Width="310" DisplayMemberBinding="{Binding ElementName=Menu, Path=Name}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

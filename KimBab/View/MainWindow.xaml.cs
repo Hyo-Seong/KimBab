@@ -20,6 +20,7 @@ namespace KimBab
         private void DataListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             Table data = (Table)DataListView.SelectedItem;
+            DataListView.SelectedItem = null;
             if (data != null)
             {
                 MenuSelectControl.SetItemIndex(data.TableNum - 1);
@@ -32,6 +33,11 @@ namespace KimBab
         private void LoadingControl_LoadingEndRecieved()
         {
             LoadingControl.Visibility = Visibility.Collapsed;
+        }
+
+        private void MenuSelectControl_HideControl()
+        {
+            MenuSelectControl.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -20,19 +20,21 @@ namespace KimBab.Controls
     /// </summary>
     public partial class MenuSelectControl : System.Windows.Controls.UserControl
     {
+        public delegate void hideControlHandler();
+        public event hideControlHandler HideControl;
         public MenuSelectControl()
         {
             InitializeComponent();
             MenuList.ItemsSource = App.menuViewModel.Items;
-            PaymentListView.ItemsSource = App.tableViewModel.Items[index].Menu;
+            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
         }
 
-        private int index;
+        private int tableNum;
 
         public void SetItemIndex(int index)
         {
             Debug.WriteLine(index);
-            this.index = index;
+            this.tableNum = index;
         }
 
         private void Menu_Click(object sender, RoutedEventArgs e)
@@ -76,8 +78,17 @@ namespace KimBab.Controls
 
         private void MenuList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+
             Menu menu = MenuList.SelectedItem as Menu;
-            App.tableViewModel.OrderMenu(index, menu);
+
+            App.tableViewModel.OrderMenu(tableNum, menu);
+            PaymentListView.ItemsSource = null;
+            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
+        }
+
+        private void GoBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HideControl?.Invoke();
         }
     }
 }
