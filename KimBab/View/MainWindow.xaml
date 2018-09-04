@@ -29,22 +29,7 @@
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="{Binding TableNum}" Grid.Row="0" FontWeight="Bold" />
-                                <ListView x:Name="OrderList" ItemsSource="{Binding Menu}" Grid.Row="1">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border Margin="0,0,5,0" BorderBrush="Black" Opacity="0.5" BorderThickness="1" CornerRadius="1">
-                                                <Grid Height="300">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="7*"/>
-                                                        <ColumnDefinition Width="3*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock Grid.Column="0" Text="{Binding Name}" />
-                                                    <TextBlock Grid.Column="1" Text="{Binding Orders}"/>
-                                                </Grid>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                <TextBlock Text="{Binding MenuString}" Grid.Row="1"/>
                                 <TextBlock Text="{Binding TotalPrice}" Grid.Row="2" FontWeight="Bold" />
                             </Grid>
                         </Border>

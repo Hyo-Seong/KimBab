@@ -26,7 +26,7 @@ namespace KimBab.Controls
         {
             InitializeComponent();
             MenuList.ItemsSource = App.menuViewModel.Items;
-            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
+
         }
 
         private int tableNum;
@@ -35,6 +35,8 @@ namespace KimBab.Controls
         {
             Debug.WriteLine(index);
             this.tableNum = index;
+            PaymentListView.ItemsSource = null;
+            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
         }
 
         private void Menu_Click(object sender, RoutedEventArgs e)
@@ -78,16 +80,25 @@ namespace KimBab.Controls
 
         private void MenuList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            Menu menu;
+            try
+            {
+                menu = MenuList.SelectedItem as Menu;
+                App.tableViewModel.OrderMenu(tableNum, menu);
+                PaymentListView.ItemsSource = null;
+                PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
+                PaymentListView.SelectedItem = 0;
+            } catch
+            {
+                return;
+            }
 
-            Menu menu = MenuList.SelectedItem as Menu;
 
-            App.tableViewModel.OrderMenu(tableNum, menu);
-            PaymentListView.ItemsSource = null;
-            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
         }
 
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)
         {
+            //TODO : 여기서 MenuString 정의해야됨!
             HideControl?.Invoke();
         }
     }

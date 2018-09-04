@@ -34,8 +34,18 @@ namespace KimBab.Model
             }
         }
 
-        private int totalPrice;
+        private string menuString;
+        public string MenuString
+        {
+            get => menuString;
+            set
+            {
+                menuString = value;
+                NotifyPropertyChanged("MenuString");
+            }
+        }
 
+        private int totalPrice;
         public int TotalPrice
         {
             get => totalPrice;

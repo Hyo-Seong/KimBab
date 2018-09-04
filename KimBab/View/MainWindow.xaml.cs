@@ -38,6 +38,8 @@ namespace KimBab
         private void MenuSelectControl_HideControl()
         {
             MenuSelectControl.Visibility = Visibility.Collapsed;
+            DataListView.ItemsSource = null;
+            DataListView.ItemsSource = App.tableViewModel.Items;
         }
     }
 }

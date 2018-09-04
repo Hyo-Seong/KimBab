@@ -32,17 +32,19 @@ namespace KimBab.ViewModel
                     if (Items[index].Menu[i].Name.Equals(menu.Name))
                     {
                         Items[index].Menu[i].Orders++;
+                        Items[index].TotalPrice += menu.Price;
                         Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
                         return;
                     }
                 }
-                Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
-                Items[index].Menu.Add(menu);
+
             } catch
             {
-                Debug.WriteLine("2 " + menu.Name + " " + menu.Orders);
-                Items[index].Menu.Add(menu);
             }
+            Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
+
+            Items[index].Menu.Add(menu);
+            Items[index].TotalPrice += menu.Price;
         }
 
         public void LoadData()

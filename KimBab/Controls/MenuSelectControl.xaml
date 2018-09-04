@@ -8,56 +8,56 @@
         mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="9*" />
         </Grid.RowDefinitions>
         <Grid Background="white" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="307*"/>
-                <RowDefinition Height="179*"/>
+                <RowDefinition Height="307*" />
+                <RowDefinition Height="179*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="GoBackBtn" Grid.Column="0" Width="140" Height="60" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Click="GoBackBtn_Click"/>
+            <Button x:Name="GoBackBtn" Grid.Column="0" Width="140" Height="60" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Click="GoBackBtn_Click" />
             <ListView x:Name="PaymentListView" FontSize="36" Grid.Column="0" HorizontalAlignment="Left" Height="382" Width="960" VerticalAlignment="Bottom" Margin="0,0,0,106">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn  Header="상품명" Width="400" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="수량" Width="250" DisplayMemberBinding="{Binding Orders}"/>
-                        <GridViewColumn Header="금액" Width="310" DisplayMemberBinding="{Binding ElementName=Menu, Path=Name}"/>
+                        <GridViewColumn  Header="상품명" Width="400" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="수량" Width="250" DisplayMemberBinding="{Binding Orders}" />
+                        <GridViewColumn Header="금액" Width="310" DisplayMemberBinding="{Binding OrderPrice}" />
                     </GridView>
                 </ListView.View>
             </ListView>
             <Grid Grid.Column="1" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="9*" />
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <Button x:Name="AllBtn" Click="Menu_Click" FontSize="25" Content="전체" Width="140" Height="60" Margin="20,14,0,13"/>
-                    <Button x:Name="KimbabBtn" Click="Menu_Click" FontSize="25" Width="140" Content="김밥" Height="60" Margin="15,14,0,13"/>
-                    <Button x:Name="NoodleBtn" Click="Menu_Click" FontSize="25" Width="140" Content="면" Height="60" Margin="15,14,0,13"/>
-                    <Button x:Name="SiksaBtn" Click="Menu_Click" FontSize="25" Width="140" Content="식사" Height="60" Margin="15,14,0,13"/>
-                    <Button x:Name="BunsikBtn" Click="Menu_Click" FontSize="25" Width="140" Content="분식" Height="60" Margin="15,14,0,13"/>
-                    <Button x:Name="DongasBtn" Click="Menu_Click" FontSize="25" Width="140" Content="돈가스" Height="60" Margin="15,14,0,13"/>
+                    <Button x:Name="AllBtn" Click="Menu_Click" FontSize="25" Content="전체" Width="140" Height="60" Margin="20,14,0,13" />
+                    <Button x:Name="KimbabBtn" Click="Menu_Click" FontSize="25" Width="140" Content="김밥" Height="60" Margin="15,14,0,13" />
+                    <Button x:Name="NoodleBtn" Click="Menu_Click" FontSize="25" Width="140" Content="면" Height="60" Margin="15,14,0,13" />
+                    <Button x:Name="SiksaBtn" Click="Menu_Click" FontSize="25" Width="140" Content="식사" Height="60" Margin="15,14,0,13" />
+                    <Button x:Name="BunsikBtn" Click="Menu_Click" FontSize="25" Width="140" Content="분식" Height="60" Margin="15,14,0,13" />
+                    <Button x:Name="DongasBtn" Click="Menu_Click" FontSize="25" Width="140" Content="돈가스" Height="60" Margin="15,14,0,13" />
                 </StackPanel>
                 <ListView x:Name="MenuList" Grid.Row="1" HorizontalAlignment="Left" Height="790" VerticalAlignment="Top" Width="950" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,0,0" SelectionChanged="MenuList_SelectionChanged">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
+                            <WrapPanel Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="450" Height="250">
-                                <Image Stretch="Fill" Source="{Binding Image}"/>
+                                <Image Stretch="Fill" Source="{Binding Image}" />
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="30" />
                                     </Grid.RowDefinitions>
                                     <TextBlock Text="{Binding Name}" Grid.Row="0" FontWeight="Bold" />
                                     <TextBlock Text="{Binding Price}" Grid.Row="2" FontWeight="Bold" />
@@ -66,9 +66,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
             </Grid>
         </Grid>
-
     </Grid>
 </UserControl>

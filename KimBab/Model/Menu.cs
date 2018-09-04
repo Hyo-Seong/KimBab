@@ -58,6 +58,17 @@ namespace KimBab.Model
             }
         }
 
+        private int orderPrice = 0;
+        public int OrderPrice
+        {
+            get => orderPrice;
+            set
+            {
+                orderPrice += price;
+                NotifyPropertyChanged("OrderPrice");
+            }
+        }
+
         private int orders;
         public int Orders
         {
@@ -65,6 +76,7 @@ namespace KimBab.Model
             set
             {
                 orders = value;
+                orderPrice = price * orders;
             }
         }
 
