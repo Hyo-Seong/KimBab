@@ -26,17 +26,17 @@ namespace KimBab.Controls
         {
             InitializeComponent();
             MenuList.ItemsSource = App.menuViewModel.Items;
-
         }
 
         private int tableNum;
 
         public void SetItemIndex(int index)
         {
-            Debug.WriteLine(index);
+            Debug.WriteLine("index : " + index);
             this.tableNum = index;
             PaymentListView.ItemsSource = null;
             PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
+            this.DataContext = App.tableViewModel.Items[tableNum];
         }
 
         private void Menu_Click(object sender, RoutedEventArgs e)
@@ -93,12 +93,13 @@ namespace KimBab.Controls
                 return;
             }
 
-
         }
 
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)
         {
             //TODO : 여기서 MenuString 정의해야됨!
+            PaymentListView.ItemsSource = null;
+            App.tableViewModel.SetMenuString(tableNum);
             HideControl?.Invoke();
         }
     }

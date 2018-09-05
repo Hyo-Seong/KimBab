@@ -23,16 +23,16 @@ namespace KimBab.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     
-        public void OrderMenu(int index, Menu menu)
+        public void OrderMenu(int tableNum, Menu menu)
         {
             try
             {
-                for(int i=0; i<Items[index].Menu.Count; i++)
+                for(int i=0; i<Items[tableNum].Menu.Count; i++)
                 {
-                    if (Items[index].Menu[i].Name.Equals(menu.Name))
+                    if (Items[tableNum].Menu[i].Name.Equals(menu.Name))
                     {
-                        Items[index].Menu[i].Orders++;
-                        Items[index].TotalPrice += menu.Price;
+                        Items[tableNum].Menu[i].Orders++;
+                        Items[tableNum].TotalPrice += menu.Price;
                         Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
                         return;
                     }
@@ -43,8 +43,17 @@ namespace KimBab.ViewModel
             }
             Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
 
-            Items[index].Menu.Add(menu);
-            Items[index].TotalPrice += menu.Price;
+            Items[tableNum].Menu.Add(menu);
+            Items[tableNum].TotalPrice += menu.Price;
+        }
+
+        public void SetMenuString(int tableNum)
+        {
+            Items[tableNum].MenuString = "";
+            foreach(Menu menu in Items[tableNum].Menu)
+            {
+                Items[tableNum].MenuString += menu.Name + "  " + menu.Orders + "\n";
+            }
         }
 
         public void LoadData()
