@@ -34,7 +34,6 @@ namespace KimBab.Controls
         {
             Debug.WriteLine("index : " + index);
             this.tableNum = index;
-            PaymentListView.ItemsSource = null;
             PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
             this.DataContext = App.tableViewModel.Items[tableNum];
         }
@@ -84,7 +83,7 @@ namespace KimBab.Controls
             try
             {
                 menu = MenuList.SelectedItem as Menu;
-                App.tableViewModel.OrderMenu(tableNum, menu);
+                App.tableViewModel.AddOrderMenu(tableNum, menu);
                 PaymentListView.ItemsSource = null;
                 PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
                 PaymentListView.SelectedItem = 0;

@@ -19,8 +19,9 @@ namespace KimBab
 
         private void DataListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+
             Table data = (Table)DataListView.SelectedItem;
-            DataListView.SelectedItem = null;
+            //DataListView.SelectedItem = null;
             if (data != null)
             {
                 MenuSelectControl.SetItemIndex(data.TableNum - 1);

@@ -23,7 +23,7 @@ namespace KimBab.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     
-        public void OrderMenu(int tableNum, Menu menu)
+        public void AddOrderMenu(int tableNum, Menu menu)
         {
             try
             {
@@ -31,6 +31,7 @@ namespace KimBab.ViewModel
                 {
                     if (Items[tableNum].Menu[i].Name.Equals(menu.Name))
                     {
+                        Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
                         Items[tableNum].Menu[i].Orders++;
                         Items[tableNum].TotalPrice += menu.Price;
                         Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
@@ -44,7 +45,20 @@ namespace KimBab.ViewModel
             Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
 
             Items[tableNum].Menu.Add(menu);
+            Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
             Items[tableNum].TotalPrice += menu.Price;
+            SortMenuList(tableNum);
+        }
+
+        private void SortMenuList(int tableNum)
+        {
+            Items[tableNum].Menu.Sort(delegate (Menu x, Menu y)
+            {
+                if (x.Name == null && y.Name == null) return 0;
+                else if (x.Name == null) return -1;
+                else if (y.Name == null) return 1;
+                else return x.Name.CompareTo(y.Name);
+            });
         }
 
         public void SetMenuString(int tableNum)
