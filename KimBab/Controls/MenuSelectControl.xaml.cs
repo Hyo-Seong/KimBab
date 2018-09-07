@@ -18,14 +18,21 @@ namespace KimBab.Controls
     /// <summary>
     /// Interaction logic for MenuSelectControl.xaml
     /// </summary>
+    /// 
+
+
+
     public partial class MenuSelectControl : System.Windows.Controls.UserControl
     {
+        private int menuListMouseDownIndex;
+        private int menuListMouseUpIndex;
         public delegate void hideControlHandler();
         public event hideControlHandler HideControl;
         public MenuSelectControl()
         {
             InitializeComponent();
             MenuList.ItemsSource = App.menuViewModel.Items;
+            MenuList.AddHandler(MouseLeftButtonDownEvent, new MouseButtonEventHandler(MenuList_MouseLeftButtonDown), true);
         }
 
         private int tableNum;
@@ -77,8 +84,27 @@ namespace KimBab.Controls
             MenuList.ItemsSource = menus;
         }
 
-        private void MenuList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void GoBackBtn_Click(object sender, RoutedEventArgs e)
         {
+            //TODO : 여기서 MenuString 정의해야됨!
+            PaymentListView.ItemsSource = null;
+            App.tableViewModel.SetMenuString(tableNum);
+            HideControl?.Invoke();
+        }
+
+        private void MenuList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            menuListMouseUpIndex = MenuList.SelectedIndex;
+            if(menuListMouseUpIndex != menuListMouseDownIndex)
+            {
+                Debug.WriteLine("Canceled");
+                return;
+            }
+            if (menuListMouseUpIndex == -1)
+            {
+                return;
+            }
+            
             Menu menu;
             try
             {
@@ -86,20 +112,19 @@ namespace KimBab.Controls
                 App.tableViewModel.AddOrderMenu(tableNum, menu);
                 PaymentListView.ItemsSource = null;
                 PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
-                PaymentListView.SelectedItem = 0;
-            } catch
+                MenuList.SelectedIndex = -1;
+            }
+            catch
             {
                 return;
             }
-
         }
 
-        private void GoBackBtn_Click(object sender, RoutedEventArgs e)
+        private void MenuList_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //TODO : 여기서 MenuString 정의해야됨!
-            PaymentListView.ItemsSource = null;
-            App.tableViewModel.SetMenuString(tableNum);
-            HideControl?.Invoke();
+            Debug.WriteLine("Hi" + menuListMouseDownIndex);
+            menuListMouseDownIndex = MenuList.SelectedIndex;
+
         }
     }
 }

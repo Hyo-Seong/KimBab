@@ -43,7 +43,7 @@
                     <Button x:Name="BunsikBtn" Click="Menu_Click" FontSize="25" Width="140" Content="분식" Height="60" Margin="15,14,0,13" />
                     <Button x:Name="DongasBtn" Click="Menu_Click" FontSize="25" Width="140" Content="돈가스" Height="60" Margin="15,14,0,13" />
                 </StackPanel>
-                <ListView x:Name="MenuList" Grid.Row="1" HorizontalAlignment="Left" Height="790" VerticalAlignment="Top" Width="950" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,0,0" SelectionChanged="MenuList_SelectionChanged">
+                <ListView x:Name="MenuList" Grid.Row="1" HorizontalAlignment="Left" Height="790" VerticalAlignment="Top" Width="950" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,0,0" MouseLeftButtonUp="MenuList_MouseLeftButtonUp">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
