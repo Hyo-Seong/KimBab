@@ -13,7 +13,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="DataListView" Grid.Row="1" SelectionChanged="DataListView_SelectionChanged" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+            <ListView x:Name="TableListView" Grid.Row="1" MouseLeftButtonUp="TableListView_MouseLeftButtonUp" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"/>

@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace KimBab
@@ -11,24 +12,13 @@ namespace KimBab
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int tableListMouseDownIndex;
+        private int tableListMouseUpIndex;
         public MainWindow()
         {
             InitializeComponent();
-            DataListView.ItemsSource = App.tableViewModel.Items;
-        }
-
-        private void DataListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-            Table data = (Table)DataListView.SelectedItem;
-            //DataListView.SelectedItem = null;
-            if (data != null)
-            {
-                MenuSelectControl.SetItemIndex(data.TableNum - 1);
-                MenuSelectControl.Visibility = Visibility.Visible;
-
-                Debug.WriteLine(data.TableNum);
-            }
+            TableListView.ItemsSource = App.tableViewModel.Items;
+            TableListView.AddHandler(MouseLeftButtonDownEvent, new MouseButtonEventHandler(TableListView_MouseLeftButtonDown), true);
         }
 
         private void LoadingControl_LoadingEndRecieved()
@@ -39,8 +29,41 @@ namespace KimBab
         private void MenuSelectControl_HideControl()
         {
             MenuSelectControl.Visibility = Visibility.Collapsed;
-            DataListView.ItemsSource = null;
-            DataListView.ItemsSource = App.tableViewModel.Items;
+            TableListView.ItemsSource = null;
+            TableListView.ItemsSource = App.tableViewModel.Items;
+        }
+
+        private void TableListView_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            tableListMouseDownIndex = TableListView.SelectedIndex;
+        }
+
+        private void TableListView_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            tableListMouseUpIndex = TableListView.SelectedIndex;
+            Debug.WriteLine(tableListMouseDownIndex + " " + tableListMouseUpIndex);
+            if (tableListMouseDownIndex != tableListMouseUpIndex)
+            {
+                Debug.WriteLine("Canceled");
+                return;
+            }
+            if (tableListMouseUpIndex == -1)
+            {
+                return;
+            }
+
+            Table selectTable;
+            try
+            {
+                selectTable = TableListView.SelectedItem as Table;
+                MenuSelectControl.SetItemIndex(selectTable.TableNum - 1);
+                MenuSelectControl.Visibility = Visibility.Visible;
+                //TableListView.SelectedIndex = -1;
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }

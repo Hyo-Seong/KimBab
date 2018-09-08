@@ -122,9 +122,7 @@ namespace KimBab.Controls
 
         private void MenuList_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Debug.WriteLine("Hi" + menuListMouseDownIndex);
             menuListMouseDownIndex = MenuList.SelectedIndex;
-
         }
     }
 }

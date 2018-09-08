@@ -152,9 +152,6 @@
     <Resource Include="resource\menu\칼국수.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resource\gif\loadingbar.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="resource\mainLogo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
