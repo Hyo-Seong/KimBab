@@ -12,7 +12,7 @@ namespace KimBab.Controls
     /// </summary>
     public partial class LoadingControl : UserControl
     {
-        const int timerInterval = 1000;
+        const int timerInterval = 1; //TODO: 제출전에 30으로 수정해야됨.
 
         public delegate void loadingEndRecievedHandler();
         public event loadingEndRecievedHandler LoadingEndRecieved;
@@ -20,7 +20,6 @@ namespace KimBab.Controls
         public LoadingControl()
         {
             InitializeComponent();
-
             InitTimer();
         }
 
@@ -34,7 +33,11 @@ namespace KimBab.Controls
 
         private void Timer_Tick(object sender, object e)
         {
-            LoadingEndRecieved?.Invoke();
+            LoadingProgressBar.Value++;
+            if(LoadingProgressBar.Value >= LoadingProgressBar.Maximum)
+            {
+                LoadingEndRecieved?.Invoke();
+            }
         }
     }
 }

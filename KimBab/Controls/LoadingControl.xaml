@@ -8,6 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920" Background="white">
     <Grid>
-        <Image x:Name="GifImage" Height="300" Width="300" gif:ImageBehavior.AnimatedSource="pack://application:,,,/resource/gif/loadingbar.gif"/>
+        <Image Source="../resource/mainLogo.jpg" Margin="0,0,10,260"/>
+        <ProgressBar x:Name="LoadingProgressBar"  Minimum="0" Maximum="100" Value="0" HorizontalAlignment="Center" Height="100" VerticalAlignment="Bottom" Width="1300" Margin="0,0,0,50"/>
     </Grid>
 </UserControl>
