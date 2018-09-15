@@ -43,6 +43,7 @@ namespace KimBab.Controls
             this.tableNum = index;
             PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
             this.DataContext = App.tableViewModel.Items[tableNum];
+            TableNumLabel.Content = (tableNum + 1) + "번 테이블";
         }
 
         private void Menu_Click(object sender, RoutedEventArgs e)
