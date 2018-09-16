@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -96,7 +97,7 @@ namespace KimBab.Controls
         private void MenuList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             menuListMouseUpIndex = MenuList.SelectedIndex;
-            if(menuListMouseUpIndex != menuListMouseDownIndex)
+            if (menuListMouseUpIndex != menuListMouseDownIndex)
             {
                 Debug.WriteLine("Canceled");
                 return;
@@ -105,18 +106,28 @@ namespace KimBab.Controls
             {
                 return;
             }
-            
+
             Menu menu;
             try
             {
                 menu = MenuList.SelectedItem as Menu;
+                BitmapImage logo = new BitmapImage();
+                logo.BeginInit();
+                logo.UriSource = new Uri("pack://application:,,,/resource/menu/" + menu.Name + ".jpg");
+                logo.EndInit();
+                SelectedMenuImage.Source = logo;
+
                 App.tableViewModel.AddOrderMenu(tableNum, menu);
+                Debug.WriteLine("aaaa");
                 PaymentListView.ItemsSource = null;
+                Debug.WriteLine("aaaa");
                 PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
+                Debug.WriteLine("aaaa");
                 MenuList.SelectedIndex = -1;
             }
-            catch
+            catch (Exception exception)
             {
+                Debug.WriteLine("MenuSelect Exception : " + exception.Message);
                 return;
             }
         }
