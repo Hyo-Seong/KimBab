@@ -10,8 +10,8 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="9*"/>
+                <RowDefinition Height="105*"/>
+                <RowDefinition Height="946*"/>
             </Grid.RowDefinitions>
             <ListView x:Name="TableListView" Grid.Row="1" MouseLeftButtonUp="TableListView_MouseLeftButtonUp" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top">
                 <ListView.ItemsPanel>
@@ -41,7 +41,7 @@
             <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" HideControl="MenuSelectControl_HideControl"/>
         </Grid>
 
-        <Grid x:Name="gdTime">
+        <Grid Grid.Row="1" x:Name="gdTime">
             <ctrl:TimeControl x:Name="TimeControl" Visibility="Visible"/>
         </Grid>
         <Grid x:Name="gdLoading">
