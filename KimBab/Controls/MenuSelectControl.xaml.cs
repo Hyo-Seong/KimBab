@@ -136,5 +136,10 @@ namespace KimBab.Controls
         {
             menuListMouseDownIndex = MenuList.SelectedIndex;
         }
+
+        private void PaymentControlBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
