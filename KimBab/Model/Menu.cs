@@ -31,7 +31,7 @@ namespace KimBab.Model
             set
             {
                 name = value;
-                image =  @"../resource/menu/" + name + ".jpg";
+                image = "pack://application:,,,/resource/menu/" + name + ".jpg";
                 NotifyPropertyChanged("Name");
                 NotifyPropertyChanged("Image");
             }

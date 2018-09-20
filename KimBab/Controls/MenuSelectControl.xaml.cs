@@ -7,12 +7,14 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Menu = KimBab.Model.Menu;
 
 namespace KimBab.Controls
 {
@@ -113,16 +115,13 @@ namespace KimBab.Controls
                 menu = MenuList.SelectedItem as Menu;
                 BitmapImage logo = new BitmapImage();
                 logo.BeginInit();
-                logo.UriSource = new Uri("pack://application:,,,/resource/menu/" + menu.Name + ".jpg");
+                logo.UriSource = new Uri(menu.Image);
                 logo.EndInit();
                 SelectedMenuImage.Source = logo;
 
                 App.tableViewModel.AddOrderMenu(tableNum, menu);
-                Debug.WriteLine("aaaa");
                 PaymentListView.ItemsSource = null;
-                Debug.WriteLine("aaaa");
                 PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
-                Debug.WriteLine("aaaa");
                 MenuList.SelectedIndex = -1;
             }
             catch (Exception exception)
@@ -139,7 +138,34 @@ namespace KimBab.Controls
 
         private void PaymentControlBtn_Click(object sender, RoutedEventArgs e)
         {
+            int selectedIndex = PaymentListView.SelectedIndex;
+            if (selectedIndex == -1)
+            {
+                Debug.WriteLine("선택되지않음.");
+                return;
+            }
+            Button clickBtn = sender as Button;
+            
+            switch (clickBtn.Content)
+            {
+                case "취소":
+                    App.tableViewModel.CancelMenu(tableNum, );
+                    break;
+                case "+":
 
+                    break;
+                case "-":
+
+                    break;
+            }
+        }
+
+        private void PaymentListDelete_Click(object sender, RoutedEventArgs e)
+        {
+            App.tableViewModel.Items[tableNum].Menu.Clear();
+            App.tableViewModel.Items[tableNum].TotalPrice = 0;
+            PaymentListView.ItemsSource = null;
+            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
         }
     }
 }

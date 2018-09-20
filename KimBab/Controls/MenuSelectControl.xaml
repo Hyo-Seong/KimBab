@@ -36,7 +36,7 @@
                 </Grid.RowDefinitions>
                 <Button x:Name="GoBackBtn" Width="140" Height="60" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" Click="GoBackBtn_Click" />
                 <Label x:Name="TableNumLabel" FontSize="36" HorizontalAlignment="Left" VerticalContentAlignment="Top" Height="80" Width="227" Margin="180,7,0,0" VerticalAlignment="Top"/>
-                <ListView Grid.Row="1" x:Name="PaymentListView" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ListView Grid.Row="1" BorderThickness="0" x:Name="PaymentListView" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn  Header="상품명" Width="350" DisplayMemberBinding="{Binding Name}" />
@@ -47,7 +47,7 @@
                 </ListView>
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                     <Button FontSize="30" Content="취소" Click="PaymentControlBtn_Click" Width="100" Margin="20,0"/>
-                    <Button FontSize="30" Content="전체취소" Click="PaymentControlBtn_Click" Width="172" Margin="0,0,20,0"/>
+                    <Button FontSize="30" Content="전체취소" Click="PaymentListDelete_Click" Width="172" Margin="0,0,20,0"/>
                     <Button FontSize="30" Content="+" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0"/>
                     <Button FontSize="30" Content="-" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0"/>
                     <Label FontSize="30" Content="전체금액:" VerticalContentAlignment="Center"/>
