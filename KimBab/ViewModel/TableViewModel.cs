@@ -27,12 +27,12 @@ namespace KimBab.ViewModel
         {
             try
             {
-                for(int i=0; i<Items[tableNum].Menu.Count; i++)
+                for(int i=0; i<Items[tableNum].MenuList.Count; i++)
                 {
-                    if (Items[tableNum].Menu[i].Name.Equals(menu.Name))
+                    if (Items[tableNum].MenuList[i].Name.Equals(menu.Name))
                     {
                         Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
-                        Items[tableNum].Menu[i].Orders++;
+                        Items[tableNum].MenuList[i].Orders++;
                         Items[tableNum].TotalPrice += menu.Price;
                         Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
                         return;
@@ -44,7 +44,7 @@ namespace KimBab.ViewModel
             }
             Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
 
-            Items[tableNum].Menu.Add(menu);
+            Items[tableNum].MenuList.Add(menu);
             Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
             Items[tableNum].TotalPrice += menu.Price;
             SortMenuList(tableNum);
@@ -52,7 +52,7 @@ namespace KimBab.ViewModel
 
         private void SortMenuList(int tableNum)
         {
-            Items[tableNum].Menu.Sort(delegate (Menu x, Menu y)
+            Items[tableNum].MenuList.Sort(delegate (Menu x, Menu y)
             {
                 if (x.Name == null && y.Name == null) return 0;
                 else if (x.Name == null) return -1;
@@ -64,7 +64,7 @@ namespace KimBab.ViewModel
         public void SetMenuString(int tableNum)
         {
             Items[tableNum].MenuString = "";
-            foreach(Menu menu in Items[tableNum].Menu)
+            foreach(Menu menu in Items[tableNum].MenuList)
             {
                 Items[tableNum].MenuString += menu.Name + "  " + menu.Orders + "\n";
             }
@@ -81,6 +81,19 @@ namespace KimBab.ViewModel
             Items.Add(new Table(7));
             Items.Add(new Table(8));
             Items.Add(new Table(9));
+        }
+
+        public void CancelMenu(int tableNum, int selectedIndex)
+        {
+            Items[tableNum].TotalPrice -= Items[tableNum].MenuList[selectedIndex].OrderPrice;
+            //totalprice 설정
+            Items[tableNum].MenuList.RemoveAt(selectedIndex);
+        }
+
+        public void ClearList(int tableNum)
+        {
+            Items[tableNum].MenuList.Clear();
+            Items[tableNum].TotalPrice = 0;
         }
     }
 }

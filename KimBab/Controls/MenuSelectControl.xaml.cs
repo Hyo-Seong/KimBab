@@ -44,7 +44,7 @@ namespace KimBab.Controls
         {
             Debug.WriteLine("index : " + index);
             this.tableNum = index;
-            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
+            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
             this.DataContext = App.tableViewModel.Items[tableNum];
             TableNumLabel.Content = (tableNum + 1) + "번 테이블";
         }
@@ -121,7 +121,7 @@ namespace KimBab.Controls
 
                 App.tableViewModel.AddOrderMenu(tableNum, menu);
                 PaymentListView.ItemsSource = null;
-                PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
+                PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
                 MenuList.SelectedIndex = -1;
             }
             catch (Exception exception)
@@ -149,7 +149,7 @@ namespace KimBab.Controls
             switch (clickBtn.Content)
             {
                 case "취소":
-                    App.tableViewModel.CancelMenu(tableNum, );
+                    App.tableViewModel.CancelMenu(tableNum, selectedIndex);
                     break;
                 case "+":
 
@@ -158,14 +158,15 @@ namespace KimBab.Controls
 
                     break;
             }
+            PaymentListView.ItemsSource = null;
+            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
         }
 
         private void PaymentListDelete_Click(object sender, RoutedEventArgs e)
         {
-            App.tableViewModel.Items[tableNum].Menu.Clear();
-            App.tableViewModel.Items[tableNum].TotalPrice = 0;
+            App.tableViewModel.ClearList(tableNum);
             PaymentListView.ItemsSource = null;
-            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].Menu;
+            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
         }
     }
 }

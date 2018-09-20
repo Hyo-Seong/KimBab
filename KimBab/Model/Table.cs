@@ -24,7 +24,7 @@ namespace KimBab.Model
         }
 
         private List<Menu> menu;
-        public List<Menu> Menu
+        public List<Menu> MenuList
         {
             get => menu;
             set
