@@ -1,12 +1,18 @@
-﻿using System;
+﻿#define DEBUG
+
+using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
+
 namespace KimBab.Controls
 {
+
+
+
     /// <summary>
     /// Interaction logic for LoadingControl.xaml
     /// </summary>
@@ -34,10 +40,15 @@ namespace KimBab.Controls
         private void Timer_Tick(object sender, object e)
         {
             LoadingProgressBar.Value++;
-            if(LoadingProgressBar.Value >= LoadingProgressBar.Maximum)
+#if DEBUG
+            LoadingEndRecieved?.Invoke();
+#else
+            if (LoadingProgressBar.Value >= LoadingProgressBar.Maximum)
             {
                 LoadingEndRecieved?.Invoke();
             }
+#endif
         }
     }
+
 }

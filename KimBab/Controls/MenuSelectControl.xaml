@@ -29,13 +29,15 @@
 
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="320"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="110"/>
                     <RowDefinition Height="300"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="GoBackBtn" Width="140" Height="60" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" Click="GoBackBtn_Click" />
-                <Label x:Name="TableNumLabel" FontSize="36" HorizontalAlignment="Left" VerticalContentAlignment="Top" Height="80" Width="227" Margin="180,7,0,0" VerticalAlignment="Top"/>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="GoBackBtn" Width="140" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,0" Click="GoBackBtn_Click" />
+                        <Label x:Name="TableNumLabel" FontSize="36" HorizontalAlignment="Left"  VerticalContentAlignment="Top" Width="227"/>
+                    </StackPanel>
                 <ListView Grid.Row="1" BorderThickness="0" x:Name="PaymentListView" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <ListView.View>
                         <GridView>
@@ -45,7 +47,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                <Button Grid.Row="2" FontSize="30" x:Name="OrderBtn" Height="50" VerticalAlignment="Top" Content="주문하기" Width="830"/>
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+
                     <Button FontSize="30" Content="취소" Click="PaymentControlBtn_Click" Width="100" Margin="20,0"/>
                     <Button FontSize="30" Content="전체취소" Click="PaymentListDelete_Click" Width="172" Margin="0,0,20,0"/>
                     <Button FontSize="30" Content="+" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0"/>

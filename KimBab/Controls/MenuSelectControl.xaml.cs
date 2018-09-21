@@ -152,9 +152,10 @@ namespace KimBab.Controls
                     App.tableViewModel.CancelMenu(tableNum, selectedIndex);
                     break;
                 case "+":
-
+                    App.tableViewModel.PlusOrder(tableNum, selectedIndex);
                     break;
                 case "-":
+                    App.tableViewModel.MinusOrder(tableNum, selectedIndex);
 
                     break;
             }

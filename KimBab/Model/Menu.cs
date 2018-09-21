@@ -18,6 +18,7 @@ namespace KimBab.Model
 
     public class Menu : INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
@@ -68,7 +69,6 @@ namespace KimBab.Model
                 NotifyPropertyChanged("OrderPrice");
             }
         }
-
         private int orders;
         public int Orders
         {

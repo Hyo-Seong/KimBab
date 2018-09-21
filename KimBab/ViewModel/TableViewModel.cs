@@ -95,5 +95,17 @@ namespace KimBab.ViewModel
             Items[tableNum].MenuList.Clear();
             Items[tableNum].TotalPrice = 0;
         }
+
+        public void PlusOrder(int tableNum, int selectedIndex)
+        {
+            Items[tableNum].MenuList[selectedIndex].Orders++;
+            Items[tableNum].TotalPrice += Items[tableNum].MenuList[selectedIndex].Price;
+        }
+
+        public void MinusOrder(int tableNum, int selectedIndex)
+        {
+            Items[tableNum].MenuList[selectedIndex].Orders--;
+            Items[tableNum].TotalPrice -= Items[tableNum].MenuList[selectedIndex].Price;
+        }
     }
 }
