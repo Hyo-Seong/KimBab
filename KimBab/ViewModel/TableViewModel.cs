@@ -31,23 +31,36 @@ namespace KimBab.ViewModel
                 {
                     if (Items[tableNum].MenuList[i].Name.Equals(menu.Name))
                     {
-                        Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
                         Items[tableNum].MenuList[i].Orders++;
                         Items[tableNum].TotalPrice += menu.Price;
-                        Debug.WriteLine("0 " + menu.Name + " " + menu.Orders);
                         return;
                     }
                 }
 
-            } catch
+            } catch (Exception exception)
             {
+                Debug.WriteLine(exception.Message);
             }
-            Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
+            Debug.WriteLine("aaa : " + menu.Orders + ", " + menu.OrderPrice);
+            Items[tableNum].MenuList.Add(CopyMenu(menu));
+            Items[tableNum].MenuList[0].OrderPrice = 1500;
+            Debug.WriteLine(Items[tableNum].MenuList[0].OrderPrice);
 
-            Items[tableNum].MenuList.Add(menu);
-            Debug.WriteLine("1 " + menu.Name + " " + menu.Orders);
             Items[tableNum].TotalPrice += menu.Price;
             SortMenuList(tableNum);
+        }
+
+        private Menu CopyMenu(Menu menu)
+        {
+            return new Menu
+            {
+                Price = menu.Price,
+                Type = menu.Type,
+                Image = menu.Image,
+                Name = menu.Name,
+                OrderPrice = menu.OrderPrice,
+                Orders = menu.Orders,
+            };
         }
 
         private void SortMenuList(int tableNum)
@@ -68,19 +81,6 @@ namespace KimBab.ViewModel
             {
                 Items[tableNum].MenuString += menu.Name + "  " + menu.Orders + "\n";
             }
-        }
-
-        public void LoadData()
-        {
-            Items.Add(new Table(1));
-            Items.Add(new Table(2));
-            Items.Add(new Table(3));
-            Items.Add(new Table(4));
-            Items.Add(new Table(5));
-            Items.Add(new Table(6));
-            Items.Add(new Table(7));
-            Items.Add(new Table(8));
-            Items.Add(new Table(9));
         }
 
         public void CancelMenu(int tableNum, int selectedIndex)
@@ -106,6 +106,24 @@ namespace KimBab.ViewModel
         {
             Items[tableNum].MenuList[selectedIndex].Orders--;
             Items[tableNum].TotalPrice -= Items[tableNum].MenuList[selectedIndex].Price;
+            if(Items[tableNum].MenuList[selectedIndex].Orders <= 0)
+            {
+                Items[tableNum].MenuList.RemoveAt(selectedIndex);
+                //Debug.WriteLine("test : " + Items[tableNum].MenuList[selectedIndex].Orders);
+            }
+        }
+
+        public void LoadData()
+        {
+            Items.Add(new Table(1));
+            Items.Add(new Table(2));
+            Items.Add(new Table(3));
+            Items.Add(new Table(4));
+            Items.Add(new Table(5));
+            Items.Add(new Table(6));
+            Items.Add(new Table(7));
+            Items.Add(new Table(8));
+            Items.Add(new Table(9));
         }
     }
 }

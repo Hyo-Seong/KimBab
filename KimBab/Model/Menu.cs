@@ -65,7 +65,6 @@ namespace KimBab.Model
             get => orderPrice;
             set
             {
-                orderPrice += price;
                 NotifyPropertyChanged("OrderPrice");
             }
         }
