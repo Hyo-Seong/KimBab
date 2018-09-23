@@ -169,5 +169,10 @@ namespace KimBab.Controls
             PaymentListView.ItemsSource = null;
             PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
         }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
