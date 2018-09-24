@@ -38,7 +38,8 @@
             </ListView>
         </Grid>
         <Grid x:Name="gdMenuSelect">
-            <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" HideControl="MenuSelectControl_HideControl"/>
+            <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" HideControl="MenuSelectControl_HideControl" OnPaymentControlStatusRecieved="MenuSelectControl_OnPaymentControlStatusRecieved"/>
+            <ctrl:PaymentControl x:Name="PaymentControl" Visibility="Collapsed"/>
         </Grid>
 
         <Grid Grid.Row="1" x:Name="gdTime">

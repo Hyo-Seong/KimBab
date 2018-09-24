@@ -21,6 +21,18 @@ namespace KimBab
             TableListView.AddHandler(MouseLeftButtonDownEvent, new MouseButtonEventHandler(TableListView_MouseLeftButtonDown), true);
         }
 
+        private void MenuSelectControl_OnPaymentControlStatusRecieved(object sender, int tableNum)
+        {
+            PaymentControl.SetTable(tableNum);
+            PaymentControl.Visibility = Visibility.Visible;
+        }
+
+        //private void SetLoginProgressRing(bool isActive)
+        //{
+        //    progressRing.IsActive = isActive;
+        //    recLogin.Visibility = isActive ? Visibility.Visible : Visibility.Collapsed;
+        //} 참고 (usercontrol 제어, 메신져코드)
+
         private void LoadingControl_LoadingEndRecieved()
         {
             LoadingControl.Visibility = Visibility.Collapsed;

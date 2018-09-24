@@ -24,5 +24,17 @@ namespace KimBab.Controls
         {
             InitializeComponent();
         }
+
+        private int tableNum = -1;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+        }
+
+        public void SetTable(int tableNum)
+        {
+            this.tableNum = tableNum;
+        }
     }
 }

@@ -27,6 +27,9 @@ namespace KimBab.Controls
 
     public partial class MenuSelectControl : System.Windows.Controls.UserControl
     {
+        public delegate void onPaymentControlStatusRecievedHandler(object sender, int tableNum);
+        public event onPaymentControlStatusRecievedHandler OnPaymentControlStatusRecieved;
+
         private int menuListMouseDownIndex;
         private int menuListMouseUpIndex;
         public delegate void hideControlHandler();
@@ -172,7 +175,8 @@ namespace KimBab.Controls
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.tableViewModel.SetMenuString(tableNum);
+            OnPaymentControlStatusRecieved?.Invoke(null, tableNum);
+
         }
     }
 }

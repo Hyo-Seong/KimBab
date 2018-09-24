@@ -63,6 +63,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\PaymentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TimeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -80,6 +84,9 @@
     </Compile>
     <Compile Include="Controls\MenuSelectControl.xaml.cs">
       <DependentUpon>MenuSelectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PaymentControl.xaml.cs">
+      <DependentUpon>PaymentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TimeControl.xaml.cs">
       <DependentUpon>TimeControl.xaml</DependentUpon>
