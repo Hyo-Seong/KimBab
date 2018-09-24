@@ -53,7 +53,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="2" FontSize="30" x:Name="OrderBtn" Height="50" VerticalAlignment="Top" Content="주문하기" Width="830"/>
+                <Button Grid.Row="2" FontSize="30" x:Name="OrderBtn" Height="50" VerticalAlignment="Top" Content="주문하기" Width="830" Click="OrderBtn_Click"/>
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
 
                     <Button FontSize="30" Content="취소" Click="PaymentControlBtn_Click" Width="100" Margin="20,0"/>
