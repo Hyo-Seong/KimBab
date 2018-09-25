@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Button Content="결재" HorizontalAlignment="Left" VerticalAlignment="Top" Width="492" Height="236" Click="Button_Click"/>
+        <TextBlock x:Name="MenuString" Text="{Binding MenuString}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

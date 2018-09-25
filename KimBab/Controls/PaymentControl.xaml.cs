@@ -35,6 +35,7 @@ namespace KimBab.Controls
         public void SetTable(int tableNum)
         {
             this.tableNum = tableNum;
+            MenuString.DataContext = App.tableViewModel.Items[tableNum];
         }
     }
 }
