@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KimBab"
         xmlns:ctrl="clr-namespace:KimBab.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1920" Height="1080" WindowState="Maximized">
+        Title="MainWindow" Width="1600" Height="950" ResizeMode="NoResize">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
