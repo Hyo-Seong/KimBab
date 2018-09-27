@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:KimBab"
         xmlns:ctrl="clr-namespace:KimBab.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1600" Height="950" ResizeMode="NoResize">
         Title="MainWindow" Width="1600" Height="950" ResizeMode="CanMinimize" Icon="/KimBab;component/resource/mainIcon.png">
     <Grid>
         <Grid>
