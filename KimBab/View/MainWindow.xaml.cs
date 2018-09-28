@@ -77,5 +77,10 @@ namespace KimBab
                 return;
             }
         }
+
+        private void WindowControlBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

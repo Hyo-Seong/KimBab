@@ -7,12 +7,27 @@
         xmlns:ctrl="clr-namespace:KimBab.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Width="1600" Height="950" ResizeMode="CanMinimize" Icon="/KimBab;component/resource/mainIcon.png">
+    <Window.Resources>
+        <Style x:Key="WindowControlStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="30, 0, 0, 0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
     <Grid>
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="105*"/>
                 <RowDefinition Height="946*"/>
             </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Button x:Name="TableBtn" Content="좌석" Click="WindowControlBtn_Click" Style="{StaticResource WindowControlStyle}"/>
+                <Button x:Name="StatisticsBtn" Content="통계" Style="{StaticResource WindowControlStyle}"/>
+            </StackPanel>
             <ListView x:Name="TableListView" Grid.Row="1" MouseLeftButtonUp="TableListView_MouseLeftButtonUp" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
