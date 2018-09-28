@@ -26,7 +26,7 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <Button x:Name="TableBtn" Content="좌석" Click="WindowControlBtn_Click" Style="{StaticResource WindowControlStyle}"/>
-                <Button x:Name="StatisticsBtn" Content="통계" Style="{StaticResource WindowControlStyle}"/>
+                <Button x:Name="StatisticsBtn" Content="통계" Click="WindowControlBtn_Click" Style="{StaticResource WindowControlStyle}"/>
             </StackPanel>
             <ListView x:Name="TableListView" Grid.Row="1" MouseLeftButtonUp="TableListView_MouseLeftButtonUp" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top">
                 <ListView.ItemsPanel>
@@ -54,6 +54,7 @@
         </Grid>
         <Grid x:Name="gdMenuSelect">
             <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" HideControl="MenuSelectControl_HideControl" OnPaymentControlStatusRecieved="MenuSelectControl_OnPaymentControlStatusRecieved"/>
+            <ctrl:StatisticsControl x:Name="StatisticsControl" Visibility="Collapsed"/>
             <ctrl:PaymentControl x:Name="PaymentControl" Visibility="Collapsed"/>
         </Grid>
 

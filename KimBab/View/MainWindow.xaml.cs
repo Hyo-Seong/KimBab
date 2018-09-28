@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
@@ -80,7 +81,18 @@ namespace KimBab
 
         private void WindowControlBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            Visibility visibilty = Visibility.Visible;
+            switch (button.Content)
+            {
+                case "좌석":
+                    visibilty = Visibility.Collapsed;
+                    break;
+                case "통계":
+                    visibilty = Visibility.Visible;
+                    break;
+            }
+            StatisticsControl.Visibility = visibilty;
         }
     }
 }
