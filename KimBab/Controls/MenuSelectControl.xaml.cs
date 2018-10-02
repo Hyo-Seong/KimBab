@@ -177,5 +177,22 @@ namespace KimBab.Controls
         {
             OnPaymentControlStatusRecieved?.Invoke(null, tableNum);
         }
+
+        private void PaymentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Menu menu = PaymentListView.SelectedItem as Menu;
+                BitmapImage logo = new BitmapImage();
+                logo.BeginInit();
+                logo.UriSource = new Uri(menu.Image);
+                logo.EndInit();
+                SelectedMenuImage.Source = logo;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+            }
+        }
     }
 }

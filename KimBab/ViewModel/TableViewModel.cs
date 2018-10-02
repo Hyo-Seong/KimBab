@@ -31,7 +31,7 @@ namespace KimBab.ViewModel
                 {
                     if (Items[tableNum].MenuList[i].Name.Equals(menu.Name))
                     {
-                        Items[tableNum].MenuList[i].Orders++;
+                        Items[tableNum].MenuList[i].Orders += 1;
                         Items[tableNum].TotalPrice += menu.Price;
                         return;
                     }
@@ -41,10 +41,7 @@ namespace KimBab.ViewModel
             {
                 Debug.WriteLine(exception.Message);
             }
-            Debug.WriteLine("aaa : " + menu.Orders + ", " + menu.OrderPrice);
             Items[tableNum].MenuList.Add(CopyMenu(menu));
-            Items[tableNum].MenuList[0].OrderPrice = 1500;
-            Debug.WriteLine(Items[tableNum].MenuList[0].OrderPrice);
 
             Items[tableNum].TotalPrice += menu.Price;
             SortMenuList(tableNum);
@@ -59,7 +56,7 @@ namespace KimBab.ViewModel
                 Image = menu.Image,
                 Name = menu.Name,
                 OrderPrice = menu.OrderPrice,
-                Orders = menu.Orders,
+                Orders = 1,
             };
         }
 

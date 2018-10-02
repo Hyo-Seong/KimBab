@@ -44,7 +44,7 @@
                         <Button x:Name="GoBackBtn" Width="140" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,0" Click="GoBackBtn_Click" />
                         <Label x:Name="TableNumLabel" FontSize="36" HorizontalAlignment="Left"  VerticalContentAlignment="Top" Width="227"/>
                     </StackPanel>
-                <ListView Grid.Row="1" BorderThickness="0" x:Name="PaymentListView" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ListView Grid.Row="1" BorderThickness="0" x:Name="PaymentListView" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="PaymentListView_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn  Header="상품명" Width="350" DisplayMemberBinding="{Binding Name}" />

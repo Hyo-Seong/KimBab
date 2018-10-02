@@ -68,7 +68,7 @@ namespace KimBab.Model
                 NotifyPropertyChanged("OrderPrice");
             }
         }
-        private int orders;
+        private int orders = 0;
         public int Orders
         {
             get => orders;

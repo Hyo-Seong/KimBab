@@ -23,6 +23,7 @@ namespace KimBab.Controls
         public StatisticsControl()
         {
             InitializeComponent();
+            this.DataContext = App.menuViewModel.Items[1];
         }
     }
 }
