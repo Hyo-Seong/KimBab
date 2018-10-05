@@ -175,6 +175,7 @@ namespace KimBab.Controls
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
+            App.tableViewModel.SetMenuString(tableNum);
             OnPaymentControlStatusRecieved?.Invoke(null, tableNum);
         }
 
