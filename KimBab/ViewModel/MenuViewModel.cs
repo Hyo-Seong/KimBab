@@ -39,9 +39,9 @@ namespace KimBab.ViewModel
             }
         }
 
-        public void AddStatistics(List<Menu> menus)
+        public void AddStatistics(int tableNum)
         {
-            foreach (Menu menu in menus)
+            foreach (Menu menu in App.tableViewModel.Items[tableNum].MenuList)
             {
                 try
                 {
@@ -49,6 +49,7 @@ namespace KimBab.ViewModel
                     {
                         if (Items[i].Name.Equals(menu.Name))
                         {
+                            Debug.WriteLine("hi : " + menu.Name);
                             Items[i].Orders += menu.Orders;
                             Items[i].OrderPrice += menu.Price;
                             return;

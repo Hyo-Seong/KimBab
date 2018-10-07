@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,12 @@ namespace KimBab.Controls
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
+            Button button = sender as Button;
+            if (button.Name.Equals("결제"))
+            {
+                Debug.WriteLine("aa");
+                App.menuViewModel.AddStatistics(tableNum);
+            }
         }
 
         public void SetTable(int tableNum)

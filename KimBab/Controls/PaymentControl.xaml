@@ -27,7 +27,7 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="결재확인" FontSize="25" VerticalAlignment="Center" Margin="20,10,0,0"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="결제확인" FontSize="25" VerticalAlignment="Center" Margin="20,10,0,0"/>
             </Grid>
             <Grid Grid.Row="1">
                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
