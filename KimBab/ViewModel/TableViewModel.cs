@@ -61,6 +61,11 @@ namespace KimBab.ViewModel
             };
         }
 
+        public void ClearTable(int tableNum)
+        {
+            Items.RemoveAt(tableNum);
+        }
+
         private void SortMenuList(int tableNum)
         {
             Items[tableNum].MenuList.Sort(delegate (Menu x, Menu y)
