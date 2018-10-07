@@ -6,33 +6,43 @@
              xmlns:local="clr-namespace:KimBab.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border BorderBrush="Black">
-        <Grid Background="Transparent">
-            <Grid Background="Gray" Width="500" Height="250" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="결재확인" FontSize="25" VerticalAlignment="Center" Margin="20,0,0,0"/>
-                </Grid>
-                <Grid Grid.Row="1">
-                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                        <TextBlock x:Name="MenuString" Text="{Binding MenuString}" Width="460" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" FontSize="20"/>
-                    </ScrollViewer>
-                </Grid>
-                <Grid Grid.Row="2">
-                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" Margin="20,0,0,15" FontSize="20" TextWrapping="Wrap" Text="총액 : " VerticalAlignment="Bottom"/>
-                        <TextBlock HorizontalAlignment="Left" Margin="20,0,0,15" FontSize="20" TextWrapping="Wrap" Text="{Binding TotalPrice}" VerticalAlignment="Bottom"/>
-                        <Button Content="결제" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="25" Click="Button_Click" Margin="0,0,0,15"/>
-                        <Button Content="취소" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="25" Click="Button_Click" Margin="0,0,0,15"/>
-                    </StackPanel>
-                </Grid>
-
-                <!--<TextBlock x:Name="TotalPricetb" Text="{Binding TotalPrice}" FontSize="25"/>-->
+    <UserControl.Resources>
+        <Style x:Key="TotalPriceTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="PaymentButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="Transparent">
+        <Grid Background="Gray" Width="500" Height="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="결재확인" FontSize="25" VerticalAlignment="Center" Margin="20,10,0,0"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <TextBlock x:Name="MenuString" Text="{Binding MenuString}" Width="460" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" FontSize="20"/>
+                </ScrollViewer>
+            </Grid>
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="20,0,0,0" Text="총액 : " Style="{StaticResource TotalPriceTextBlockStyle}"/>
+                    <TextBlock Text="{Binding TotalPrice}" Style="{StaticResource TotalPriceTextBlockStyle}"/>
+                    <TextBlock Padding="0,0,200,0" Text="원" Style="{StaticResource TotalPriceTextBlockStyle}"/>
+                    <Button Content="결제" Click="Button_Click" Style="{StaticResource PaymentButtonStyle}"/>
+                    <Button Content="취소" Click="Button_Click" Margin="10,0,0,0" Style="{StaticResource PaymentButtonStyle}"/>
+                </StackPanel>
             </Grid>
         </Grid>
-    </Border>
+    </Grid>
 </UserControl>
