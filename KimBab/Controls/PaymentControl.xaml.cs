@@ -32,7 +32,7 @@ namespace KimBab.Controls
         {
             this.Visibility = Visibility.Hidden;
             Button button = sender as Button;
-            if (button.Name.Equals("결제"))
+            if (button.Content.Equals("결제"))
             {
                 Debug.WriteLine("aa");
                 App.menuViewModel.AddStatistics(tableNum);
@@ -43,7 +43,6 @@ namespace KimBab.Controls
         {
             this.tableNum = tableNum;
             this.DataContext = App.tableViewModel.Items[tableNum];
-
         }
     }
 }

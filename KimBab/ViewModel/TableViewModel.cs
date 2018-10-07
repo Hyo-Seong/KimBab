@@ -51,6 +51,7 @@ namespace KimBab.ViewModel
         {
             return new Menu
             {
+                Idx = menu.Idx,
                 Price = menu.Price,
                 Type = menu.Type,
                 Image = menu.Image,

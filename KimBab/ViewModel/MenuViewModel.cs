@@ -17,7 +17,7 @@ namespace KimBab.ViewModel
         {
             Items = new ObservableCollection<Menu>();
             LoadData();
-            
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -27,34 +27,31 @@ namespace KimBab.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void AddMenu(Menu menu)
-        {
-            try
-            {
-                int index = Items.IndexOf(menu);
-                Items[index].Orders++;
-            } catch (Exception exception)
-            {
-                Debug.WriteLine(exception.Message);
-            }
-        }
+        //never used...
+        //public void AddMenu(Menu menu)
+        //{
+        //    try
+        //    {
+        //        int index = Items.IndexOf(menu);
+        //        Items[index].Orders++;
+        //    } catch (Exception exception)
+        //    {
+        //        Debug.WriteLine(exception.Message);
+        //    }
+        //}
 
         public void AddStatistics(int tableNum)
         {
+            Debug.WriteLine("aaaa : " + App.tableViewModel.Items[tableNum].MenuList.Count);
+            Debug.WriteLine("bbbb : " + App.tableViewModel.Items[tableNum].MenuList[1].Name);
             foreach (Menu menu in App.tableViewModel.Items[tableNum].MenuList)
             {
+                Debug.WriteLine(menu.Name);
                 try
                 {
-                    for (int i = 0; i < Items.Count; i++)
-                    {
-                        if (Items[i].Name.Equals(menu.Name))
-                        {
-                            Debug.WriteLine("hi : " + menu.Name);
-                            Items[i].Orders += menu.Orders;
-                            Items[i].OrderPrice += menu.Price;
-                            return;
-                        }
-                    }
+                    Debug.WriteLine("Name : " + Items[menu.Idx].Name);
+                    Items[menu.Idx].Orders += menu.Orders;
+                    Items[menu.Idx].OrderPrice += menu.Price;
                 }
                 catch (Exception exception)
                 {
@@ -62,6 +59,7 @@ namespace KimBab.ViewModel
                 }
 
             }
+            //여기서 결재된 테이블 정보 제거.
         }
 
         private Menu CopyMenu(Menu menu)
@@ -109,6 +107,15 @@ namespace KimBab.ViewModel
             Items.Add(new Menu { Name = "돈까스", Price = 5000, Type = FoodType.DONGAS });
             Items.Add(new Menu { Name = "치즈돈까스", Price = 5500, Type = FoodType.DONGAS });
             Items.Add(new Menu { Name = "고구마돈까스", Price = 6000, Type = FoodType.DONGAS });
+            SetIdx();
+        }
+
+        public void SetIdx()
+        {
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Items[i].Idx = i;
+            }
         }
     }
 }

@@ -25,6 +25,16 @@ namespace KimBab.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private int idx = -1;
+        public int Idx
+        {
+            get => idx;
+            set
+            {
+                idx = value;
+            }
+        }
+
         private string name;
         public string Name
         {
