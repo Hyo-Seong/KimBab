@@ -45,7 +45,6 @@ namespace KimBab.Controls
 
         public void SetItemIndex(int index)
         {
-            Debug.WriteLine("index : " + index);
             this.tableNum = index;
             PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
             this.DataContext = App.tableViewModel.Items[tableNum];

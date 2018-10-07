@@ -54,7 +54,6 @@ namespace KimBab
         private void TableListView_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             tableListMouseUpIndex = TableListView.SelectedIndex;
-            Debug.WriteLine(tableListMouseDownIndex + " " + tableListMouseUpIndex);
             if (tableListMouseDownIndex != tableListMouseUpIndex)
             {
                 Debug.WriteLine("Canceled");

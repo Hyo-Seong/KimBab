@@ -34,7 +34,6 @@ namespace KimBab.Controls
             Button button = sender as Button;
             if (button.Content.Equals("결제"))
             {
-                Debug.WriteLine("aa");
                 App.menuViewModel.AddStatistics(tableNum);
             }
         }

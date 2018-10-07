@@ -42,14 +42,10 @@ namespace KimBab.ViewModel
 
         public void AddStatistics(int tableNum)
         {
-            Debug.WriteLine("aaaa : " + App.tableViewModel.Items[tableNum].MenuList.Count);
-            Debug.WriteLine("bbbb : " + App.tableViewModel.Items[tableNum].MenuList[1].Name);
             foreach (Menu menu in App.tableViewModel.Items[tableNum].MenuList)
             {
-                Debug.WriteLine(menu.Name);
                 try
                 {
-                    Debug.WriteLine("Name : " + Items[menu.Idx].Name);
                     Items[menu.Idx].Orders += menu.Orders;
                     Items[menu.Idx].OrderPrice += menu.Price;
                 }
@@ -59,7 +55,7 @@ namespace KimBab.ViewModel
                 }
 
             }
-            //여기서 결재된 테이블 정보 제거.
+            //여기서 결제된 테이블 정보 제거.
         }
 
         private Menu CopyMenu(Menu menu)

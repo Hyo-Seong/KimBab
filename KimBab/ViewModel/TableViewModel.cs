@@ -107,7 +107,6 @@ namespace KimBab.ViewModel
             if(Items[tableNum].MenuList[selectedIndex].Orders <= 0)
             {
                 Items[tableNum].MenuList.RemoveAt(selectedIndex);
-                //Debug.WriteLine("test : " + Items[tableNum].MenuList[selectedIndex].Orders);
             }
         }
 
