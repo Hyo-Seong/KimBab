@@ -35,7 +35,7 @@ namespace KimBab.Controls
             if (button.Content.Equals("결제"))
             {
                 App.menuViewModel.AddStatistics(tableNum);
-                // todo : 여기서 메인화면으로 넘기기.
+                // todo : 여기서 메인화면으로 넘기기. (이벤트로 넘겨야할듯..?)
             } else
             {
                 return;
