@@ -27,19 +27,6 @@ namespace KimBab.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        //never used...
-        //public void AddMenu(Menu menu)
-        //{
-        //    try
-        //    {
-        //        int index = Items.IndexOf(menu);
-        //        Items[index].Orders++;
-        //    } catch (Exception exception)
-        //    {
-        //        Debug.WriteLine(exception.Message);
-        //    }
-        //}
-
         public void AddStatistics(int tableNum)
         {
             foreach (Menu menu in App.tableViewModel.Items[tableNum].MenuList)
