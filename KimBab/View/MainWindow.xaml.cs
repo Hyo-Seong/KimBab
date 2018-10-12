@@ -93,5 +93,10 @@ namespace KimBab
             }
             StatisticsControl.Visibility = visibilty;
         }
+
+        private void PaymentControl_onChangeVisible(Visibility visibility)
+        {
+            MenuSelectControl.Visibility = visibility;
+        }
     }
 }

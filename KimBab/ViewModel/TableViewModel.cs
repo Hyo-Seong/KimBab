@@ -63,7 +63,9 @@ namespace KimBab.ViewModel
 
         public void ClearTable(int tableNum)
         {
-            Items.RemoveAt(tableNum);
+            Items[tableNum].MenuList.Clear();
+            Items[tableNum].TotalPrice = 0;
+            Items[tableNum].MenuString = "";
         }
 
         private void SortMenuList(int tableNum)
@@ -96,6 +98,7 @@ namespace KimBab.ViewModel
         public void ClearList(int tableNum)
         {
             Items[tableNum].MenuList.Clear();
+            Debug.WriteLine("A" + Items[tableNum].TableNum);
             Items[tableNum].TotalPrice = 0;
         }
 
