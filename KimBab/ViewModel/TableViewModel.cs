@@ -17,17 +17,19 @@ namespace KimBab.ViewModel
             Items = new ObservableCollection<Table>();
             LoadData();
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void NotifyPropertyChanged(String propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    
+
         public void AddOrderMenu(int tableNum, Menu menu)
         {
             try
             {
-                for(int i=0; i<Items[tableNum].MenuList.Count; i++)
+                for (int i = 0; i < Items[tableNum].MenuList.Count; i++)
                 {
                     if (Items[tableNum].MenuList[i].Name.Equals(menu.Name))
                     {
@@ -36,8 +38,8 @@ namespace KimBab.ViewModel
                         return;
                     }
                 }
-
-            } catch (Exception exception)
+            }
+            catch (Exception exception)
             {
                 Debug.WriteLine(exception.Message);
             }
@@ -82,7 +84,7 @@ namespace KimBab.ViewModel
         public void SetMenuString(int tableNum)
         {
             Items[tableNum].MenuString = "";
-            foreach(Menu menu in Items[tableNum].MenuList)
+            foreach (Menu menu in Items[tableNum].MenuList)
             {
                 Items[tableNum].MenuString += menu.Name + "  " + menu.Orders + "\n";
             }
@@ -112,7 +114,7 @@ namespace KimBab.ViewModel
         {
             Items[tableNum].MenuList[selectedIndex].Orders--;
             Items[tableNum].TotalPrice -= Items[tableNum].MenuList[selectedIndex].Price;
-            if(Items[tableNum].MenuList[selectedIndex].Orders <= 0)
+            if (Items[tableNum].MenuList[selectedIndex].Orders <= 0)
             {
                 Items[tableNum].MenuList.RemoveAt(selectedIndex);
             }
