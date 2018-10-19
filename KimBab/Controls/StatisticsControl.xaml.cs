@@ -25,5 +25,18 @@ namespace KimBab.Controls
             InitializeComponent();
             this.DataContext = App.menuViewModel.Items[1];
         }
+
+        private void ChangeChartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if(button.Content.Equals("카테고리별 판매량"))
+            {
+                button.Content = "메뉴별 판매량";
+            }
+            else
+            {
+                button.Content = "카테고리별 판매량";
+            }
+        }
     }
 }

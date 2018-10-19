@@ -42,7 +42,6 @@ namespace KimBab.ViewModel
                 }
 
             }
-            //여기서 결제된 테이블 정보 제거.
             App.tableViewModel.ClearTable(tableNum);
         }
 
