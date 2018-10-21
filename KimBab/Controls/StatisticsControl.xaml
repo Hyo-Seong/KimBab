@@ -1,19 +1,147 @@
 ﻿<UserControl x:Class="KimBab.Controls.StatisticsControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:chartCtrl="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
              xmlns:local="clr-namespace:KimBab.Controls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="9*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Background="White">
             <TextBlock x:Name="a" Text="{Binding Orders}" FontSize="36"></TextBlock>
-            <Button Content="카테고리별 판매량" x:Name="ChangeChartBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="30" Click="ChangeChartBtn_Click"/>
+            <Button Content="카테고리별 판매량" x:Name="ChangeChartBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="30" Click="ChangeChartBtn_Click" />
         </Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+
+                  VerticalScrollBarVisibility="Auto">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="262*"></RowDefinition>
+
+                    <RowDefinition Height="262*"></RowDefinition>
+
+                    <RowDefinition Height="262*"></RowDefinition>
+
+                </Grid.RowDefinitions>
+
+
+
+                <chartCtrl:Chart
+
+                x:Name="xColumnChart" Title="Column Series Demo"
+
+                Grid.Row="0" Grid.Column="0" >
+
+                    <chartCtrl:ColumnSeries Title="직원수"
+
+                                        DependentValuePath="Value"
+
+                                        IndependentValuePath="Key"
+
+                                        ItemsSource="{Binding}" />
+
+                </chartCtrl:Chart>
+
+
+
+                <chartCtrl:Chart
+
+                x:Name="xPieChart" Title="Pie Series Demo"
+
+                Grid.Row="0" Grid.Column="1" >
+
+                    <chartCtrl:PieSeries Title="직원수"
+
+                                     DependentValuePath="Value"
+
+                                     IndependentValuePath="Key"
+
+                                     ItemsSource="{Binding}"
+
+                                     IsSelectionEnabled="True" />
+
+                </chartCtrl:Chart>
+
+
+
+                <chartCtrl:Chart 
+
+                x:Name="xAreaChart" Title="Area Series Demo"
+
+                Grid.Row="1" Grid.Column="0">
+
+                    <chartCtrl:AreaSeries Title="직원수"
+
+                                      DependentValuePath="Value"
+
+                                      IndependentValuePath="Key"
+
+                                      ItemsSource="{Binding}"
+
+                                      IsSelectionEnabled="True"/>
+
+                </chartCtrl:Chart>
+
+
+
+                <chartCtrl:Chart 
+
+                x:Name="xBarChart" Title="Bar Series Demo"
+
+                       Grid.Row="1" Grid.Column="1">
+
+                    <chartCtrl:BarSeries Title="직원수" 
+
+                                     DependentValuePath="Value"
+
+                                     IndependentValuePath="Key"
+
+                                     ItemsSource="{Binding}"
+
+                                     IsSelectionEnabled="True"/>
+
+                </chartCtrl:Chart>
+
+
+
+                <chartCtrl:Chart
+
+                x:Name="xLineChart" Title="Line Series Demo"
+
+                       Grid.Row="2" Grid.Column="0">
+
+                    <chartCtrl:LineSeries Title="직원수"
+
+                                      DependentValuePath="Value"
+
+                                      IndependentValuePath="Key"
+
+                                      ItemsSource="{Binding}"
+
+                                      IsSelectionEnabled="True"/>
+
+                </chartCtrl:Chart>
+
+
+
+            </Grid>
+
+        </ScrollViewer>
     </Grid>
 </UserControl>
