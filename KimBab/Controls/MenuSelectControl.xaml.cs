@@ -2,18 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Menu = KimBab.Model.Menu;
 
 namespace KimBab.Controls
@@ -21,19 +13,21 @@ namespace KimBab.Controls
     /// <summary>
     /// Interaction logic for MenuSelectControl.xaml
     /// </summary>
-    /// 
-
-
+    ///
 
     public partial class MenuSelectControl : System.Windows.Controls.UserControl
     {
         public delegate void onPaymentControlStatusRecievedHandler(object sender, int tableNum);
+
         public event onPaymentControlStatusRecievedHandler OnPaymentControlStatusRecieved;
 
         private int menuListMouseDownIndex;
         private int menuListMouseUpIndex;
+
         public delegate void hideControlHandler();
+
         public event hideControlHandler HideControl;
+
         public MenuSelectControl()
         {
             InitializeComponent();
@@ -61,21 +55,27 @@ namespace KimBab.Controls
                 case "KimbabBtn":
                     foodType = FoodType.KIMBAB;
                     break;
+
                 case "NoodleBtn":
                     foodType = FoodType.NOODLE;
                     break;
+
                 case "SiksaBtn":
                     foodType = FoodType.SIKSA;
                     break;
+
                 case "BunsikBtn":
                     foodType = FoodType.BUNSIK;
                     break;
+
                 case "DongasBtn":
                     foodType = FoodType.DONGAS;
                     break;
+
                 case "AllBtn":
                     MenuList.ItemsSource = App.menuViewModel.Items;
                     return;
+
                 default:
                     Debug.WriteLine("ERROR!");
                     return;
@@ -147,15 +147,17 @@ namespace KimBab.Controls
                 return;
             }
             Button clickBtn = sender as Button;
-            
+
             switch (clickBtn.Content)
             {
                 case "취소":
                     App.tableViewModel.CancelMenu(tableNum, selectedIndex);
                     break;
+
                 case "+":
                     App.tableViewModel.PlusOrder(tableNum, selectedIndex);
                     break;
+
                 case "-":
                     App.tableViewModel.MinusOrder(tableNum, selectedIndex);
 

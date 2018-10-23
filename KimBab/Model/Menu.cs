@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace KimBab.Model
 {
@@ -18,14 +13,15 @@ namespace KimBab.Model
 
     public class Menu : INotifyPropertyChanged
     {
-
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private int idx = -1;
+
         public int Idx
         {
             get => idx;
@@ -36,6 +32,7 @@ namespace KimBab.Model
         }
 
         private string name;
+
         public string Name
         {
             get => name;
@@ -49,6 +46,7 @@ namespace KimBab.Model
         }
 
         private string image;
+
         public string Image
         {
             get => image;
@@ -59,6 +57,7 @@ namespace KimBab.Model
         }
 
         private int price;
+
         public int Price
         {
             get => price;
@@ -70,6 +69,7 @@ namespace KimBab.Model
         }
 
         private int orderPrice = 0;
+
         public int OrderPrice
         {
             get => orderPrice;
@@ -78,7 +78,9 @@ namespace KimBab.Model
                 NotifyPropertyChanged("OrderPrice");
             }
         }
+
         private int orders = 0;
+
         public int Orders
         {
             get => orders;
@@ -90,6 +92,7 @@ namespace KimBab.Model
         }
 
         private FoodType type;
+
         public FoodType Type
         {
             get => type;

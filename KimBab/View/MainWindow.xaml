@@ -9,29 +9,29 @@
         Title="MainWindow" Width="1600" Height="950" ResizeMode="CanMinimize" Icon="/KimBab;component/resource/mainIcon.png">
     <Window.Resources>
         <Style x:Key="WindowControlStyle" TargetType="Button">
-            <Setter Property="FontSize" Value="25"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Margin" Value="30, 0, 0, 0"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Margin" Value="30, 0, 0, 0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </Window.Resources>
     <Grid>
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="105*"/>
-                <RowDefinition Height="946*"/>
+                <RowDefinition Height="105*" />
+                <RowDefinition Height="946*" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Button x:Name="TableBtn" Content="좌석" Click="WindowControlBtn_Click" Style="{StaticResource WindowControlStyle}"/>
-                <Button x:Name="StatisticsBtn" Content="통계" Click="WindowControlBtn_Click" Style="{StaticResource WindowControlStyle}"/>
+                <Button x:Name="TableBtn" Content="좌석" Click="WindowControlBtn_Click" Style="{StaticResource WindowControlStyle}" />
+                <Button x:Name="StatisticsBtn" Content="통계" Click="WindowControlBtn_Click" Style="{StaticResource WindowControlStyle}" />
             </StackPanel>
             <ListView x:Name="TableListView" Grid.Row="1" MouseLeftButtonUp="TableListView_MouseLeftButtonUp" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
+                        <WrapPanel Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
@@ -39,12 +39,12 @@
                         <Border Margin="0,0,5,0" BorderBrush="Black" Opacity="0.5" BorderThickness="1" CornerRadius="1">
                             <Grid Width="299" Height="300">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="30"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="30" />
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="{Binding TableNum}" Grid.Row="0" FontWeight="Bold" />
-                                <TextBlock Text="{Binding MenuString}" Grid.Row="1"/>
+                                <TextBlock Text="{Binding MenuString}" Grid.Row="1" />
                                 <TextBlock Text="{Binding TotalPrice}" Grid.Row="2" FontWeight="Bold" />
                             </Grid>
                         </Border>
@@ -53,16 +53,16 @@
             </ListView>
         </Grid>
         <Grid x:Name="gdMenuSelect">
-            <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" HideControl="MenuSelectControl_HideControl" OnPaymentControlStatusRecieved="MenuSelectControl_OnPaymentControlStatusRecieved"/>
-            <ctrl:StatisticsControl x:Name="StatisticsControl" Visibility="Collapsed"/>
-            <ctrl:PaymentControl x:Name="PaymentControl" Visibility="Collapsed" onChangeVisible="PaymentControl_onChangeVisible"/>
+            <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" HideControl="MenuSelectControl_HideControl" OnPaymentControlStatusRecieved="MenuSelectControl_OnPaymentControlStatusRecieved" />
+            <ctrl:StatisticsControl x:Name="StatisticsControl" Visibility="Collapsed" />
+            <ctrl:PaymentControl x:Name="PaymentControl" Visibility="Collapsed" onChangeVisible="PaymentControl_onChangeVisible" />
         </Grid>
 
         <Grid Grid.Row="1" x:Name="gdTime">
-            <ctrl:TimeControl x:Name="TimeControl" Visibility="Visible"/>
+            <ctrl:TimeControl x:Name="TimeControl" Visibility="Visible" />
         </Grid>
         <Grid x:Name="gdLoading">
-            <ctrl:LoadingControl x:Name="LoadingControl" Visibility="Visible" LoadingEndRecieved="LoadingControl_LoadingEndRecieved"/>
+            <ctrl:LoadingControl x:Name="LoadingControl" Visibility="Visible" LoadingEndRecieved="LoadingControl_LoadingEndRecieved" />
         </Grid>
     </Grid>
 </Window>

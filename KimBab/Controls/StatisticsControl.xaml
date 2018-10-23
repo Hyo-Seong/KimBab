@@ -21,6 +21,5 @@
             ></chartingToolkit:ColumnSeries>
             </chartingToolkit:Chart>
         </Grid>
-
     </Grid>
 </UserControl>

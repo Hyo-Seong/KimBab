@@ -9,16 +9,15 @@
 
     <UserControl.Resources>
         <Style x:Key="CategoryTitleStyle" TargetType="Button">
-            <Setter Property="Padding" Value="25,0,25,0"/>
-            <Setter Property="FontSize" Value="25"/>
-            <Setter Property="Height" Value="60"/>
-            <Setter Property="Margin" Value="15,14,0,13"/>
+            <Setter Property="Padding" Value="25,0,25,0" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="Height" Value="60" />
+            <Setter Property="Margin" Value="15,14,0,13" />
         </Style>
         <Style x:Key="MenuListTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="Background" Value="Black"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="TextAlignment" Value="Center"/>
-            
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="TextAlignment" Value="Center" />
         </Style>
     </UserControl.Resources>
 
@@ -35,15 +34,15 @@
 
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="320"/>
-                    <RowDefinition Height="110"/>
-                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="320" />
+                    <RowDefinition Height="110" />
+                    <RowDefinition Height="300" />
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <Button x:Name="GoBackBtn" Width="140" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,0" Click="GoBackBtn_Click" />
-                        <Label x:Name="TableNumLabel" FontSize="36" HorizontalAlignment="Left"  VerticalContentAlignment="Top" Width="227"/>
-                    </StackPanel>
+                    <Button x:Name="GoBackBtn" Width="140" Content="뒤로가기" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,10,0" Click="GoBackBtn_Click" />
+                    <Label x:Name="TableNumLabel" FontSize="36" HorizontalAlignment="Left"  VerticalContentAlignment="Top" Width="227" />
+                </StackPanel>
                 <ListView Grid.Row="1" BorderThickness="0" x:Name="PaymentListView" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="PaymentListView_SelectionChanged">
                     <ListView.View>
                         <GridView>
@@ -53,17 +52,17 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="2" FontSize="30" x:Name="OrderBtn" Height="50" VerticalAlignment="Top" Content="주문하기" Width="830" Click="OrderBtn_Click"/>
+                <Button Grid.Row="2" FontSize="30" x:Name="OrderBtn" Height="50" VerticalAlignment="Top" Content="주문하기" Width="830" Click="OrderBtn_Click" />
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
 
-                    <Button FontSize="30" Content="취소" Click="PaymentControlBtn_Click" Width="100" Margin="20,0"/>
-                    <Button FontSize="30" Content="전체취소" Click="PaymentListDelete_Click" Width="172" Margin="0,0,20,0"/>
-                    <Button FontSize="30" Content="+" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0"/>
-                    <Button FontSize="30" Content="-" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0"/>
-                    <Label FontSize="30" Content="전체금액:" VerticalContentAlignment="Center"/>
-                    <TextBlock FontSize="36" x:Name="TotalPriceText" Text="{Binding TotalPrice}" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+                    <Button FontSize="30" Content="취소" Click="PaymentControlBtn_Click" Width="100" Margin="20,0" />
+                    <Button FontSize="30" Content="전체취소" Click="PaymentListDelete_Click" Width="172" Margin="0,0,20,0" />
+                    <Button FontSize="30" Content="+" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0" />
+                    <Button FontSize="30" Content="-" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0" />
+                    <Label FontSize="30" Content="전체금액:" VerticalContentAlignment="Center" />
+                    <TextBlock FontSize="36" x:Name="TotalPriceText" Text="{Binding TotalPrice}" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Bottom" />
                 </StackPanel>
-                <Image Grid.Row="3" x:Name="SelectedMenuImage" Stretch="UniformToFill" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="598" Margin="0,10,0,0"/>
+                <Image Grid.Row="3" x:Name="SelectedMenuImage" Stretch="UniformToFill" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="598" Margin="0,10,0,0" />
             </Grid>
 
             <Grid Grid.Column="1">
@@ -72,12 +71,12 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <Button x:Name="AllBtn" Click="Menu_Click" Content="전체" Style="{StaticResource CategoryTitleStyle}"/>
-                    <Button x:Name="KimbabBtn" Click="Menu_Click" Content="김밥" Style="{StaticResource CategoryTitleStyle}"/>
-                    <Button x:Name="NoodleBtn" Click="Menu_Click"  Content="면" Style="{StaticResource CategoryTitleStyle}"/>
-                    <Button x:Name="SiksaBtn" Click="Menu_Click" Content="식사" Style="{StaticResource CategoryTitleStyle}"/>
-                    <Button x:Name="BunsikBtn" Click="Menu_Click" Content="분식" Style="{StaticResource CategoryTitleStyle}"/>
-                    <Button x:Name="DongasBtn" Click="Menu_Click" Content="돈가스" Style="{StaticResource CategoryTitleStyle}"/>
+                    <Button x:Name="AllBtn" Click="Menu_Click" Content="전체" Style="{StaticResource CategoryTitleStyle}" />
+                    <Button x:Name="KimbabBtn" Click="Menu_Click" Content="김밥" Style="{StaticResource CategoryTitleStyle}" />
+                    <Button x:Name="NoodleBtn" Click="Menu_Click"  Content="면" Style="{StaticResource CategoryTitleStyle}" />
+                    <Button x:Name="SiksaBtn" Click="Menu_Click" Content="식사" Style="{StaticResource CategoryTitleStyle}" />
+                    <Button x:Name="BunsikBtn" Click="Menu_Click" Content="분식" Style="{StaticResource CategoryTitleStyle}" />
+                    <Button x:Name="DongasBtn" Click="Menu_Click" Content="돈가스" Style="{StaticResource CategoryTitleStyle}" />
                 </StackPanel>
                 <ListView x:Name="MenuList" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0.2,0,0" MouseLeftButtonUp="MenuList_MouseLeftButtonUp">
                     <ListView.ItemsPanel>
@@ -95,8 +94,8 @@
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="30" />
                                     </Grid.RowDefinitions>
-                                    <TextBlock Text="{Binding Name}" Grid.Row="0" FontWeight="Bold" Style="{StaticResource MenuListTextBlockStyle}"/>
-                                    <TextBlock Text="{Binding Price}" Grid.Row="2" FontWeight="Bold" Style="{StaticResource MenuListTextBlockStyle}"/>
+                                    <TextBlock Text="{Binding Name}" Grid.Row="0" FontWeight="Bold" Style="{StaticResource MenuListTextBlockStyle}" />
+                                    <TextBlock Text="{Binding Price}" Grid.Row="2" FontWeight="Bold" Style="{StaticResource MenuListTextBlockStyle}" />
                                 </Grid>
                             </Grid>
                         </DataTemplate>

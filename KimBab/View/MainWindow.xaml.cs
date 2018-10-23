@@ -1,10 +1,8 @@
 ﻿using KimBab.Model;
-using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace KimBab
 {
@@ -15,6 +13,7 @@ namespace KimBab
     {
         private int tableListMouseDownIndex;
         private int tableListMouseUpIndex;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -87,6 +86,7 @@ namespace KimBab
                 case "좌석":
                     visibilty = Visibility.Collapsed;
                     break;
+
                 case "통계":
                     visibilty = Visibility.Visible;
                     break;

@@ -13,6 +13,7 @@ namespace KimBab.Model
         }
 
         private int tableNum;
+
         public int TableNum
         {
             get => tableNum;
@@ -24,6 +25,7 @@ namespace KimBab.Model
         }
 
         private List<Menu> menu;
+
         public List<Menu> MenuList
         {
             get => menu;
@@ -35,6 +37,7 @@ namespace KimBab.Model
         }
 
         private string menuString;
+
         public string MenuString
         {
             get => menuString;
@@ -46,6 +49,7 @@ namespace KimBab.Model
         }
 
         private int totalPrice;
+
         public int TotalPrice
         {
             get => totalPrice;

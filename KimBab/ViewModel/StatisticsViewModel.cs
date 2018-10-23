@@ -39,7 +39,6 @@ namespace KimBab.ViewModel
                     Debug.WriteLine(exception.Message);
                 }
                 Items.Add(CopyMenu(menu));
-
             }
         }
 

@@ -1,6 +1,5 @@
 ﻿using KimBab.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -17,7 +16,6 @@ namespace KimBab.ViewModel
         {
             Items = new ObservableCollection<Menu>();
             LoadData();
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -40,7 +38,6 @@ namespace KimBab.ViewModel
                 {
                     Debug.WriteLine(exception.Message);
                 }
-
             }
             App.tableViewModel.ClearTable(tableNum);
         }

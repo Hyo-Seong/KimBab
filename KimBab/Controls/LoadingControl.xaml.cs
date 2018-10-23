@@ -1,26 +1,20 @@
 ﻿#define DEBUG
 
 using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-
 namespace KimBab.Controls
 {
-
-
-
     /// <summary>
     /// Interaction logic for LoadingControl.xaml
     /// </summary>
     public partial class LoadingControl : UserControl
     {
-        const int timerInterval = 1; //TODO: 제출전에 30으로 수정해야됨.
+        private const int timerInterval = 1; //TODO: 제출전에 30으로 수정해야됨.
 
         public delegate void loadingEndRecievedHandler();
+
         public event loadingEndRecievedHandler LoadingEndRecieved;
 
         public LoadingControl()
@@ -50,5 +44,4 @@ namespace KimBab.Controls
 #endif
         }
     }
-
 }
