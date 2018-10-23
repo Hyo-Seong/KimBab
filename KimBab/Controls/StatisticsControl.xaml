@@ -15,8 +15,14 @@
         <Grid Grid.Row="1" Background="White">
             <Button Content="카테고리별 판매량" x:Name="ChangeChartBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="30" Click="ChangeChartBtn_Click" />
             <chartingToolkit:Chart  Height="600" HorizontalAlignment="Left"
-            Name="CategoryChart" Title="메뉴별 통계" FontSize="10"
-            VerticalAlignment="Bottom" Width="1500" Margin="40,0,0,50">
+            Name="CategoryChart" Title="카테고리별 통계" FontSize="10"
+            VerticalAlignment="Bottom" Width="1500" Margin="40,0,0,50" Visibility="Visible">
+                <chartingToolkit:ColumnSeries DependentValuePath="Value"  IndependentValuePath="Key" ItemsSource="{Binding}"
+            ></chartingToolkit:ColumnSeries>
+            </chartingToolkit:Chart>
+            <chartingToolkit:Chart  Height="600" HorizontalAlignment="Left"
+            Name="MenuChart" Title="메뉴별 통계" FontSize="10"
+            VerticalAlignment="Bottom" Width="1500" Margin="40,0,0,50" Visibility="Hidden">
                 <chartingToolkit:ColumnSeries DependentValuePath="Value"  IndependentValuePath="Key" ItemsSource="{Binding}"
             ></chartingToolkit:ColumnSeries>
             </chartingToolkit:Chart>
