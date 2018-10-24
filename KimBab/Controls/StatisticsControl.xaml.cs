@@ -53,7 +53,9 @@ namespace KimBab.Controls
             }
             SetCategoryList(typeCountArray);
 
+            CategoryChart.DataContext = null;
             CategoryChart.DataContext = CategoryChartList;
+            MenuChart.DataContext = null;
             MenuChart.DataContext = MenuChartList;
         }
 
