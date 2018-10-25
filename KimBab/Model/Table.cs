@@ -60,9 +60,26 @@ namespace KimBab.Model
             }
         }
 
+        private string orderDateTime = "주문시간 : ";
+
+        public string OrderDateTime
+        {
+            get => orderDateTime;
+            set
+            {
+                orderDateTime = "주문시간 : " + value;
+                NotifyPropertyChanged("OrderDateTime");
+            }
+        }
+
         public Table(int TableNum)
         {
             tableNum = TableNum;
+            menu = new List<Menu>();
+        }
+
+        public Table()
+        {
             menu = new List<Menu>();
         }
     }

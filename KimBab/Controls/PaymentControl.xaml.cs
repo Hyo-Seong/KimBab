@@ -21,7 +21,7 @@ namespace KimBab.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Visibility = Visibility.Hidden;
+            this.Visibility = Visibility.Collapsed;
             Button button = sender as Button;
             if (button.Content.Equals("결제"))
             {

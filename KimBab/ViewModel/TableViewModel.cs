@@ -1,5 +1,6 @@
 ﻿using KimBab.Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -9,6 +10,8 @@ namespace KimBab.ViewModel
     public class TableViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Table> Items { get; set; }
+
+        public Table TempTable;
 
         private bool IsDataLoaded { get; set; }
 
@@ -47,6 +50,24 @@ namespace KimBab.ViewModel
 
             Items[tableNum].TotalPrice += menu.Price;
             SortMenuList(tableNum);
+        }
+
+        public void SetTempItems(int tableNum)
+        {
+            
+            TempTable = CopyTable(Items[tableNum]); // 이게되나? 같이 변하던데
+        }
+
+        private Table CopyTable(Table table)
+        {
+            return new Table
+            {
+                TableNum = table.TableNum,
+                MenuList = table.MenuList,
+                MenuString = table.MenuString,
+                OrderDateTime = table.OrderDateTime,
+                TotalPrice = table.TotalPrice
+            };
         }
 
         private Menu CopyMenu(Menu menu)
@@ -97,6 +118,12 @@ namespace KimBab.ViewModel
             Items[tableNum].MenuList.RemoveAt(selectedIndex);
         }
 
+        public void CancelOrder(int tableNum)
+        {
+            Items[tableNum] = CopyTable(TempTable);
+            Debug.WriteLine(Items[tableNum].TableNum);
+        }
+
         public void ClearList(int tableNum)
         {
             Items[tableNum].MenuList.Clear();
@@ -131,6 +158,11 @@ namespace KimBab.ViewModel
             Items.Add(new Table(7));
             Items.Add(new Table(8));
             Items.Add(new Table(9));
+        }
+
+        public void SetOrderDateTime(int tableNum)
+        {
+            Items[tableNum].OrderDateTime = DateTime.Now.ToString();
         }
     }
 }

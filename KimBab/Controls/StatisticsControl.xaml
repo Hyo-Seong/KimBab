@@ -45,7 +45,7 @@
                 </chartingToolkit:Chart>
             </Grid>
 
-            <Grid x:Name="MenuChartGd" Visibility="Hidden">
+            <Grid x:Name="MenuChartGd" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />

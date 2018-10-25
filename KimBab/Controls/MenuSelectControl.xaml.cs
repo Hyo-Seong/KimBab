@@ -27,6 +27,7 @@ namespace KimBab.Controls
         public delegate void hideControlHandler();
 
         public event hideControlHandler HideControl;
+        
 
         public MenuSelectControl()
         {
@@ -40,6 +41,10 @@ namespace KimBab.Controls
         public void SetItemIndex(int index)
         {
             this.tableNum = index;
+
+            App.tableViewModel.SetTempItems(tableNum);
+
+            PaymentListView.ItemsSource = null;
             PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
             this.DataContext = App.tableViewModel.Items[tableNum];
             TableNumLabel.Content = (tableNum + 1) + "번 테이블";
@@ -47,6 +52,7 @@ namespace KimBab.Controls
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine(App.tableViewModel.Items[tableNum].OrderDateTime);
             List<Menu> menus = new List<Menu>();
             FoodType foodType;
             var element = (FrameworkElement)sender;
@@ -92,9 +98,7 @@ namespace KimBab.Controls
 
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)
         {
-            //TODO : 여기서 MenuString 정의해야됨!
-            PaymentListView.ItemsSource = null;
-            App.tableViewModel.SetMenuString(tableNum);
+            App.tableViewModel.CancelOrder(tableNum);
             HideControl?.Invoke();
         }
 
@@ -174,9 +178,8 @@ namespace KimBab.Controls
             PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
         }
 
-        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.tableViewModel.SetMenuString(tableNum);
             OnPaymentControlStatusRecieved?.Invoke(null, tableNum);
         }
 
@@ -195,6 +198,19 @@ namespace KimBab.Controls
             {
                 Debug.WriteLine(exception.Message);
             }
+        }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //메인화면으로 돌아가기, 주문시간 표시하기
+            if(App.tableViewModel.Items[tableNum].MenuList.Count == 0)
+            {
+                Debug.WriteLine("아무것도 선택안됨.");
+                return;
+            }
+            App.tableViewModel.SetMenuString(tableNum);
+            App.tableViewModel.SetOrderDateTime(tableNum);
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

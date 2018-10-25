@@ -118,14 +118,14 @@ namespace KimBab.Controls
             if (button.Content.Equals("카테고리별 판매량"))
             {
                 button.Content = "메뉴별 판매량";
-                CategoryChartGd.Visibility = Visibility.Hidden;
+                CategoryChartGd.Visibility = Visibility.Collapsed;
                 MenuChartGd.Visibility = Visibility.Visible;
             }
             else
             {
                 button.Content = "카테고리별 판매량";
                 CategoryChartGd.Visibility = Visibility.Visible;
-                MenuChartGd.Visibility = Visibility.Hidden;
+                MenuChartGd.Visibility = Visibility.Collapsed;
             };
         }
     }
