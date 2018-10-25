@@ -55,7 +55,9 @@ namespace KimBab.ViewModel
         public void SetTempItems(int tableNum)
         {
             
-            TempTable = CopyTable(Items[tableNum]); // 이게되나? 같이 변하던데
+            TempTable = new Table(); // 이게되나? 같이 변하던데
+            TempTable.MenuList = Items[tableNum].MenuList; // 이렇게하면 되려나..?
+            //TempTable = CopyTable(Items[tableNum]); // 이게되나? 같이 변하던데
         }
 
         private Table CopyTable(Table table)
