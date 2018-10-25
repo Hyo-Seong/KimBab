@@ -52,7 +52,6 @@ namespace KimBab.Controls
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(App.tableViewModel.Items[tableNum].OrderDateTime);
             List<Menu> menus = new List<Menu>();
             FoodType foodType;
             var element = (FrameworkElement)sender;

@@ -56,16 +56,22 @@ namespace KimBab.ViewModel
         {
             
             TempTable = new Table(); // 이게되나? 같이 변하던데
-            TempTable.MenuList = Items[tableNum].MenuList; // 이렇게하면 되려나..?
-            //TempTable = CopyTable(Items[tableNum]); // 이게되나? 같이 변하던데
+            //TempTable.MenuList = Items[tableNum].MenuList; // 이렇게하면 되려나..?
+            TempTable = CopyTable(Items[tableNum]); // 이게되나? 같이 변하던데
         }
 
         private Table CopyTable(Table table)
         {
+            List<Menu> menus = new List<Menu>();
+            foreach(Menu menu in table.MenuList)
+            {
+                menus.Add(menu);
+            }
+
             return new Table
             {
                 TableNum = table.TableNum,
-                MenuList = table.MenuList,
+                MenuList = menus,
                 MenuString = table.MenuString,
                 OrderDateTime = table.OrderDateTime,
                 TotalPrice = table.TotalPrice
@@ -164,7 +170,7 @@ namespace KimBab.ViewModel
 
         public void SetOrderDateTime(int tableNum)
         {
-            Items[tableNum].OrderDateTime = DateTime.Now.ToString();
+            Items[tableNum].OrderDateTime = "주문시간 : " + DateTime.Now.ToString();
         }
     }
 }

@@ -67,7 +67,7 @@ namespace KimBab.Model
             get => orderDateTime;
             set
             {
-                orderDateTime = "주문시간 : " + value;
+                orderDateTime = value;
                 NotifyPropertyChanged("OrderDateTime");
             }
         }
