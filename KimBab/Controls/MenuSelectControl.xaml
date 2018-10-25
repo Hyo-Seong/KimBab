@@ -52,16 +52,26 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="2" FontSize="30" x:Name="OrderBtn" Height="50" VerticalAlignment="Top" Content="주문하기" Width="830" Click="OrderBtn_Click" />
-                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" >
+                        <Button FontSize="30" x:Name="PaymentBtn" Height="50" VerticalAlignment="Top" Content="결제하기" Click="OrderBtn_Click" />
+                        <Button FontSize="30" x:Name="OrderBtn" Height="50" VerticalAlignment="Top" Content="주문하기" Click="OrderBtn_Click" />
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                        <Button FontSize="30" Content="취소" Click="PaymentControlBtn_Click" Width="100" Margin="20,0,20,0" />
+                        <Button FontSize="30" Content="전체취소" Click="PaymentListDelete_Click" Width="172" Margin="0,0,20,0" />
+                        <Button FontSize="30" Content="+" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0" />
+                        <Button FontSize="30" Content="-" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0" />
+                        <Label FontSize="30" Content="전체금액:" VerticalContentAlignment="Center" />
+                        <TextBlock FontSize="36" x:Name="TotalPriceText" Text="{Binding TotalPrice}" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Bottom" />
+                    </StackPanel>
+                </Grid>
 
-                    <Button FontSize="30" Content="취소" Click="PaymentControlBtn_Click" Width="100" Margin="20,0" />
-                    <Button FontSize="30" Content="전체취소" Click="PaymentListDelete_Click" Width="172" Margin="0,0,20,0" />
-                    <Button FontSize="30" Content="+" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0" />
-                    <Button FontSize="30" Content="-" Click="PaymentControlBtn_Click" Width="100" Margin="0,0,20,0" />
-                    <Label FontSize="30" Content="전체금액:" VerticalContentAlignment="Center" />
-                    <TextBlock FontSize="36" x:Name="TotalPriceText" Text="{Binding TotalPrice}" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Bottom" />
-                </StackPanel>
                 <Image Grid.Row="3" x:Name="SelectedMenuImage" Stretch="UniformToFill" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="598" Margin="0,10,0,0" />
             </Grid>
 
