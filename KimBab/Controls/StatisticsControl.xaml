@@ -7,31 +7,60 @@
              xmlns:local="clr-namespace:KimBab.Controls"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="ChartStyle" TargetType="chartingToolkit:Chart">
+            <Setter Property="Height" Value="350" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Margin" Value="10,0,0,0" />
+            <Setter Property="Width" Value="1560" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
+            <RowDefinition Height="60" />
             <RowDefinition Height="9*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Background="White">
             <Button Content="카테고리별 판매량" x:Name="ChangeChartBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="30" Click="ChangeChartBtn_Click" />
-            <chartingToolkit:Chart  Height="300" HorizontalAlignment="Left"
-            Name="a" Title="카테고리별 통계" FontSize="10"
-            VerticalAlignment="Bottom" Width="1500" Margin="40,0,0,50" Visibility="Visible">
-                <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
-            ></chartingToolkit:ColumnSeries>
-            </chartingToolkit:Chart>
-            <chartingToolkit:Chart  Height="300" HorizontalAlignment="Left"
-            Name="CategoryChart" Title="카테고리별 통계" FontSize="10"
-            VerticalAlignment="Bottom" Width="1500" Margin="40,0,0,50" Visibility="Visible">
-                <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
-            ></chartingToolkit:ColumnSeries>
-            </chartingToolkit:Chart>
-            <chartingToolkit:Chart  Height="600" HorizontalAlignment="Left"
-            Name="MenuChart" Title="메뉴별 통계" FontSize="10"
-            VerticalAlignment="Bottom" Width="1500" Margin="40,0,0,50" Visibility="Hidden">
-                <chartingToolkit:ColumnSeries DependentValuePath="Value"  IndependentValuePath="Key" ItemsSource="{Binding}"
-            ></chartingToolkit:ColumnSeries>
-            </chartingToolkit:Chart>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="White">
+            <Grid x:Name="CategoryChartGd" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <chartingToolkit:Chart Grid.Row="0" Style="{StaticResource ChartStyle}"
+                Name="CategoryOrdersChart" Title="카테고리별 판매량">
+                    <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
+                    ></chartingToolkit:ColumnSeries>
+                </chartingToolkit:Chart>
+                <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartStyle}"
+                Name="CategoryOrderPriceChart" Title="카테고리별 판매액">
+                    <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
+                    ></chartingToolkit:ColumnSeries>
+                </chartingToolkit:Chart>
+            </Grid>
+
+            <Grid x:Name="MenuChartGd" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <chartingToolkit:Chart Grid.Row="0" Style="{StaticResource ChartStyle}"
+                Name="MenuOrdersChart" Title="메뉴별 통계">
+                    <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
+                    ></chartingToolkit:ColumnSeries>
+                </chartingToolkit:Chart>
+                <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartStyle}"
+                Name="MenuOrderPriceChart" Title="메뉴별 통계">
+                    <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
+                    ></chartingToolkit:ColumnSeries>
+                </chartingToolkit:Chart>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

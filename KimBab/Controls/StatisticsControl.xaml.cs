@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,8 +10,12 @@ namespace KimBab.Controls
     /// </summary>
     public partial class StatisticsControl : UserControl
     {
-        private List<KeyValuePair<string, int>> CategoryChartList = new List<KeyValuePair<string, int>>();
-        private List<KeyValuePair<string, int>> MenuChartList = new List<KeyValuePair<string, int>>();
+        private List<KeyValuePair<string, int>> CategoryOrdersChartList = new List<KeyValuePair<string, int>>();
+        private List<KeyValuePair<string, int>> CategoryOrderPriceChartList = new List<KeyValuePair<string, int>>();
+        private List<KeyValuePair<string, int>> MenuOrdersChartList = new List<KeyValuePair<string, int>>();
+        private List<KeyValuePair<string, int>> MenuOrderPriceChartList = new List<KeyValuePair<string, int>>();
+
+        List<CategoryCount> typeCountList = new List<CategoryCount>();
 
         public StatisticsControl()
         {
@@ -19,59 +24,91 @@ namespace KimBab.Controls
             UpdateChart();
         }
 
+
+
         public void UpdateChart()
         {
             InitList();
 
-            int i = 0;
-            int[] typeCountArray = new int[] { 0, 0, 0, 0, 0 };
+            
+            InitTypeCountList();
+            
+            // 메뉴별 판매량
+            // 메뉴별 총액
+            // 카테고리별 판매량
+            // 카테고리별 총액
+
             foreach (Model.Menu menu in App.menuViewModel.Items)
             {
-                MenuChartList.Add(new KeyValuePair<string, int>(menu.Name, menu.Orders));
+                MenuOrdersChartList.Add(new KeyValuePair<string, int>(menu.Name, menu.Orders)); // 메뉴별 판매량 통계
+                MenuOrderPriceChartList.Add(new KeyValuePair<string, int>(menu.Name, menu.OrderPrice));
+                int i = 0;
                 switch (menu.Type.ToString())
                 {
                     case "KIMBAB":
-                        typeCountArray[0] += menu.Orders;
+                        i = 0;
                         break;
 
                     case "NOODLE":
-                        typeCountArray[1] += menu.Orders;
+                        i = 1;
                         break;
 
                     case "SIKSA":
-                        typeCountArray[2] += menu.Orders;
+                        i = 2;
                         break;
 
                     case "BUNSIK":
-                        typeCountArray[3] += menu.Orders;
+                        i = 3;
                         break;
 
                     case "DONGAS":
-                        typeCountArray[4] += menu.Orders;
+                        i = 4;
                         break;
                 }
+                typeCountList[i].Orders += menu.Orders;
+                typeCountList[i].OrderPrice += menu.OrderPrice;
             }
-            SetCategoryList(typeCountArray);
+            SetCategoryList(typeCountList);
 
-            CategoryChart.DataContext = null;
-            CategoryChart.DataContext = CategoryChartList;
-            MenuChart.DataContext = null;
-            MenuChart.DataContext = MenuChartList;
+
+            SetChartDataContext();
         }
 
-        private void SetCategoryList(int[] array)
+        private void SetChartDataContext()
         {
-            CategoryChartList.Add(new KeyValuePair<string, int>("KIMBAB", array[0]));
-            CategoryChartList.Add(new KeyValuePair<string, int>("NOODLE", array[1]));
-            CategoryChartList.Add(new KeyValuePair<string, int>("SIKSA", array[2]));
-            CategoryChartList.Add(new KeyValuePair<string, int>("BUNSIK", array[3]));
-            CategoryChartList.Add(new KeyValuePair<string, int>("DONGAS", array[4]));
+
+            CategoryOrderPriceChart.DataContext = null;
+            CategoryOrdersChart.DataContext = null;
+            MenuOrderPriceChart.DataContext = null;
+            MenuOrdersChart.DataContext = null;
+
+            CategoryOrderPriceChart.DataContext = CategoryOrderPriceChartList;
+            CategoryOrdersChart.DataContext = CategoryOrdersChartList;
+            MenuOrderPriceChart.DataContext = MenuOrderPriceChartList;
+            MenuOrdersChart.DataContext = MenuOrdersChartList;
+        }
+
+        private void InitTypeCountList()
+        {
+            for(int i = 0; i<5; i++)
+            {
+                typeCountList.Add(new CategoryCount { Orders = 0, OrderPrice = 0 });
+            }
+        }
+
+        private void SetCategoryList(List<CategoryCount> array)
+        {
+            for(int i = 0; i<5; i++)
+            {
+                CategoryOrderPriceChartList.Add(new KeyValuePair<string, int>("" + (Model.FoodType)i, array[i].OrderPrice));
+                CategoryOrdersChartList.Add(new KeyValuePair<string, int>("" + (Model.FoodType)i, array[i].Orders));
+            }
         }
 
         private void InitList()
         {
-            CategoryChartList.Clear();
-            MenuChartList.Clear();
+            CategoryOrderPriceChartList.Clear();
+            MenuOrdersChartList.Clear();
         }
 
         private void ChangeChartBtn_Click(object sender, RoutedEventArgs e)
@@ -81,15 +118,20 @@ namespace KimBab.Controls
             if (button.Content.Equals("카테고리별 판매량"))
             {
                 button.Content = "메뉴별 판매량";
-                CategoryChart.Visibility = Visibility.Hidden;
-                MenuChart.Visibility = Visibility.Visible;
+                CategoryChartGd.Visibility = Visibility.Hidden;
+                MenuChartGd.Visibility = Visibility.Visible;
             }
             else
             {
                 button.Content = "카테고리별 판매량";
-                CategoryChart.Visibility = Visibility.Visible;
-                MenuChart.Visibility = Visibility.Hidden;
-            }
+                CategoryChartGd.Visibility = Visibility.Visible;
+                MenuChartGd.Visibility = Visibility.Hidden;
+            };
         }
     }
+
+    public class CategoryCount{
+        public int Orders;
+        public int OrderPrice;
+        }
 }
