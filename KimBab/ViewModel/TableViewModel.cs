@@ -168,9 +168,14 @@ namespace KimBab.ViewModel
             Items.Add(new Table(9));
         }
 
-        public void SetOrderDateTime(int tableNum)
+        public void SetOrderDateTime(int tableNum, bool isNull)
         {
-            Items[tableNum].OrderDateTime = "주문시간 : " + DateTime.Now.ToString();
+            string timeString = "주문시간 : ";
+            if (!isNull)
+            {
+                timeString += DateTime.Now.ToString();
+            }
+            Items[tableNum].OrderDateTime = timeString;
         }
     }
 }

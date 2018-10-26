@@ -151,6 +151,7 @@ namespace KimBab.Controls
             }
             Button clickBtn = sender as Button;
 
+            var temp = PaymentListView.SelectedItem as Menu;
             switch (clickBtn.Content)
             {
                 case "취소":
@@ -166,8 +167,20 @@ namespace KimBab.Controls
 
                     break;
             }
-            PaymentListView.ItemsSource = null;
-            PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
+            try
+            {
+                PaymentListView.ItemsSource = null;
+                PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
+                if (App.tableViewModel.Items[tableNum].MenuList[selectedIndex].Name == temp.Name) //
+                {
+                    PaymentListView.SelectedIndex = selectedIndex;   
+                }
+            } catch(Exception exception)
+            {
+                Debug.WriteLine("PaymentListView Error : " + exception.Message);
+            }
+
+
         }
 
         private void PaymentListDelete_Click(object sender, RoutedEventArgs e)
@@ -202,13 +215,17 @@ namespace KimBab.Controls
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
             //메인화면으로 돌아가기, 주문시간 표시하기
+            bool isNull;
             if(App.tableViewModel.Items[tableNum].MenuList.Count == 0)
             {
-                Debug.WriteLine("아무것도 선택안됨.");
-                return;
+                isNull = true;
+            }
+            else
+            {
+                isNull = false;
             }
             App.tableViewModel.SetMenuString(tableNum);
-            App.tableViewModel.SetOrderDateTime(tableNum);
+            App.tableViewModel.SetOrderDateTime(tableNum, isNull);
             this.Visibility = Visibility.Collapsed;
         }
     }

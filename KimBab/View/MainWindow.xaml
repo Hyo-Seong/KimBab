@@ -21,8 +21,8 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="105*" />
-                <RowDefinition Height="946*" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <Button x:Name="TableBtn" Content="좌석" Click="WindowControlBtn_Click" Style="{StaticResource WindowControlStyle}" />
@@ -52,15 +52,17 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
+
+        <Grid x:Name="gdTime">
+            <ctrl:TimeControl x:Name="TimeControl" Visibility="Visible" />
+        </Grid>
+
         <Grid x:Name="gdMenuSelect">
             <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" HideControl="MenuSelectControl_HideControl" OnPaymentControlStatusRecieved="MenuSelectControl_OnPaymentControlStatusRecieved" />
             <ctrl:StatisticsControl x:Name="StatisticsControl" Visibility="Collapsed" />
             <ctrl:PaymentControl x:Name="PaymentControl" Visibility="Hidden" onChangeVisible="PaymentControl_onChangeVisible" />
         </Grid>
 
-        <Grid Grid.Row="1" x:Name="gdTime">
-            <ctrl:TimeControl x:Name="TimeControl" Visibility="Visible" />
-        </Grid>
         <Grid x:Name="gdLoading">
             <ctrl:LoadingControl x:Name="LoadingControl" Visibility="Visible" LoadingEndRecieved="LoadingControl_LoadingEndRecieved" />
         </Grid>
