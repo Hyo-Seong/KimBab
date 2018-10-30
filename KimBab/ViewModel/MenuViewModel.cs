@@ -8,13 +8,12 @@ namespace KimBab.ViewModel
 {
     public class MenuViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Menu> Items { get; set; }
+        public ObservableCollection<Menu> Items { get; } = new ObservableCollection<Menu>();
 
         private bool IsDataLoaded { get; set; }
 
         public MenuViewModel()
         {
-            Items = new ObservableCollection<Menu>();
             LoadData();
         }
 
