@@ -175,5 +175,9 @@
   <ItemGroup>
     <Resource Include="resource\mainIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\menu\코카콜라.jpg" />
+    <Resource Include="resource\menu\펩시.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

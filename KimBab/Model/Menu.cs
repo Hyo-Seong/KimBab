@@ -8,7 +8,8 @@ namespace KimBab.Model
         NOODLE,
         SIKSA,
         BUNSIK,
-        DONGAS
+        DONGAS,
+        DRINK
     }
 
     public class Menu : INotifyPropertyChanged
@@ -100,6 +101,17 @@ namespace KimBab.Model
             {
                 type = value;
                 NotifyPropertyChanged("Type");
+            }
+        }
+
+        private int barcode;
+
+        public int Barcode
+        {
+            get => barcode;
+            set
+            {
+                barcode = value;
             }
         }
     }
