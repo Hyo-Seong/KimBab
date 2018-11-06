@@ -51,12 +51,12 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <chartingToolkit:Chart Grid.Row="0" Style="{StaticResource ChartStyle}"
-                Name="MenuOrdersChart" Title="메뉴별 통계">
+                Name="MenuOrdersChart" Title="메뉴별 판매량">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>
                 </chartingToolkit:Chart>
                 <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartStyle}"
-                Name="MenuOrderPriceChart" Title="메뉴별 통계">
+                Name="MenuOrderPriceChart" Title="메뉴별 판매액">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>
                 </chartingToolkit:Chart>

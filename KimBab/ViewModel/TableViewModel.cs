@@ -97,6 +97,7 @@ namespace KimBab.ViewModel
             Items[tableNum].MenuList.Clear();
             Items[tableNum].TotalPrice = 0;
             Items[tableNum].MenuString = "";
+            Items[tableNum].OrderDateTime = "";
         }
 
         private void SortMenuList(int tableNum)

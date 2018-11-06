@@ -196,6 +196,8 @@ namespace KimBab.Controls
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
+            //결제를 하기전에 주문은 필수니까.
+            Order(Visibility.Visible);
             OnPaymentControlStatusRecieved?.Invoke(null, tableNum);
         }
 
@@ -219,8 +221,13 @@ namespace KimBab.Controls
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
             //메인화면으로 돌아가기, 주문시간 표시하기
+            Order(Visibility.Collapsed);
+        }
+
+        private void Order(Visibility visibility)
+        {
             bool isNull;
-            if(App.tableViewModel.Items[tableNum].MenuList.Count == 0)
+            if (App.tableViewModel.Items[tableNum].MenuList.Count == 0)
             {
                 isNull = true;
             }
@@ -230,7 +237,7 @@ namespace KimBab.Controls
             }
             App.tableViewModel.SetMenuString(tableNum);
             App.tableViewModel.SetOrderDateTime(tableNum, isNull);
-            this.Visibility = Visibility.Collapsed;
+            this.Visibility = visibility;
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
@@ -256,12 +263,18 @@ namespace KimBab.Controls
             }
         }
 
-        private void CheckBarcode(string drink)
+        private void CheckBarcode(string barcodeStr)
         {
-            Debug.WriteLine(drink);
-            if(App.menuViewModel.pepsi.ToString() == drink || App.menuViewModel.coca.ToString() == drink)
+            for(int i=0;i<MenuList.Items.Count; i++)
             {
+                Menu menu = MenuList.Items[i] as Menu;
+                if (menu.Barcode.ToString() == barcodeStr)
+                {
+                    MenuList.SelectedIndex = i;
+                    menuListMouseDownIndex = i;
+                    MenuList_MouseLeftButtonUp(null, null);
 
+                }
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KimBab.Model;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +18,7 @@ namespace KimBab.Controls
 
         List<CategoryCount> typeCountList = new List<CategoryCount>();
 
+        private const int FOODTYPE_COUNT = 6;
         public StatisticsControl()
         {
             InitializeComponent();
@@ -30,8 +32,6 @@ namespace KimBab.Controls
         {
             InitList();
 
-            
-            InitTypeCountList();
             
             // 메뉴별 판매량
             // 메뉴별 총액
@@ -64,6 +64,9 @@ namespace KimBab.Controls
                     case "DONGAS":
                         i = 4;
                         break;
+                    case "DRINK":
+                        i = 5;
+                        break;
                 }
                 typeCountList[i].Orders += menu.Orders;
                 typeCountList[i].OrderPrice += menu.OrderPrice;
@@ -74,9 +77,9 @@ namespace KimBab.Controls
             SetChartDataContext();
         }
 
+        #region DataContext설정
         private void SetChartDataContext()
         {
-
             CategoryOrderPriceChart.DataContext = null;
             CategoryOrdersChart.DataContext = null;
             MenuOrderPriceChart.DataContext = null;
@@ -87,10 +90,11 @@ namespace KimBab.Controls
             MenuOrderPriceChart.DataContext = MenuOrderPriceChartList;
             MenuOrdersChart.DataContext = MenuOrdersChartList;
         }
+        #endregion
 
         private void InitTypeCountList()
         {
-            for(int i = 0; i<5; i++)
+            for(int i = 0; i<FOODTYPE_COUNT; i++)
             {
                 typeCountList.Add(new CategoryCount { Orders = 0, OrderPrice = 0 });
             }
@@ -98,7 +102,7 @@ namespace KimBab.Controls
 
         private void SetCategoryList(List<CategoryCount> array)
         {
-            for(int i = 0; i<5; i++)
+            for(int i = 0; i<FOODTYPE_COUNT; i++)
             {
                 CategoryOrderPriceChartList.Add(new KeyValuePair<string, int>("" + (Model.FoodType)i, array[i].OrderPrice));
                 CategoryOrdersChartList.Add(new KeyValuePair<string, int>("" + (Model.FoodType)i, array[i].Orders));
@@ -107,13 +111,17 @@ namespace KimBab.Controls
 
         private void InitList()
         {
+            CategoryOrdersChartList.Clear();
             CategoryOrderPriceChartList.Clear();
             MenuOrdersChartList.Clear();
+            MenuOrderPriceChartList.Clear();
+            typeCountList.Clear();
+
+            InitTypeCountList();
         }
 
         private void ChangeChartBtn_Click(object sender, RoutedEventArgs e)
         {
-
             Button button = sender as Button;
             if (button.Content.Equals("카테고리별 판매량"))
             {

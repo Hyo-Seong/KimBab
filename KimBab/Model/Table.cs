@@ -3,6 +3,11 @@ using System.ComponentModel;
 
 namespace KimBab.Model
 {
+    public enum PaymentType
+    {
+        CASH,CARD
+    }
+
     public class Table : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -69,6 +74,17 @@ namespace KimBab.Model
             {
                 orderDateTime = value;
                 NotifyPropertyChanged("OrderDateTime");
+            }
+        }
+
+        private PaymentType payment;
+        public PaymentType Payment
+        {
+            get => payment;
+            set
+            {
+                payment = value;
+                NotifyPropertyChanged("Payment");
             }
         }
 
