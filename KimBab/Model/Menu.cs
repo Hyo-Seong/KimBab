@@ -104,7 +104,7 @@ namespace KimBab.Model
             }
         }
 
-        private long barcode;
+        private long barcode = 0;
 
         public long Barcode
         {

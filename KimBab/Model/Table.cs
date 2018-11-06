@@ -29,14 +29,14 @@ namespace KimBab.Model
             }
         }
 
-        private List<Menu> menu;
+        private List<Menu> menuList;
 
         public List<Menu> MenuList
         {
-            get => menu;
+            get => menuList;
             set
             {
-                menu = value;
+                menuList = value;
                 NotifyPropertyChanged("Menu");
             }
         }
@@ -90,13 +90,14 @@ namespace KimBab.Model
 
         public Table(int TableNum)
         {
-            tableNum = TableNum;
-            menu = new List<Menu>();
+            Payment = PaymentType.CASH;
+            this.TableNum = TableNum;
+            MenuList = new List<Menu>();
         }
 
         public Table()
         {
-            menu = new List<Menu>();
+            MenuList = new List<Menu>();
         }
     }
 }

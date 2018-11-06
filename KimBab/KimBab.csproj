@@ -101,6 +101,7 @@
     <Compile Include="Controls\TimeControl.xaml.cs">
       <DependentUpon>TimeControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\PaymentTypeConverter.cs" />
     <Compile Include="Model\Menu.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />

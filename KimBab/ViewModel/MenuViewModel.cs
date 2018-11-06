@@ -54,6 +54,7 @@ namespace KimBab.ViewModel
                 Name = menu.Name,
                 OrderPrice = menu.OrderPrice,
                 Orders = 1,
+                Barcode = menu.Barcode,
             };
         }
 

@@ -74,7 +74,8 @@ namespace KimBab.ViewModel
                 MenuList = menus,
                 MenuString = table.MenuString,
                 OrderDateTime = table.OrderDateTime,
-                TotalPrice = table.TotalPrice
+                TotalPrice = table.TotalPrice,
+                Payment = table.Payment,
             };
         }
 
@@ -89,6 +90,7 @@ namespace KimBab.ViewModel
                 Name = menu.Name,
                 OrderPrice = menu.OrderPrice,
                 Orders = 1,
+                Barcode = menu.Barcode
             };
         }
 

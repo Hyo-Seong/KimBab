@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KimBab.Model;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -12,12 +13,20 @@ namespace KimBab.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return null;
+            if(parameter.ToString() == ((PaymentType)value).ToString())
+            {
+                return true;
+            }
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+
+        private void asynsc()
+        {
         }
     }
 }
