@@ -23,9 +23,11 @@
             <RowDefinition Height="60" />
             <RowDefinition Height="9*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Background="White">
-            <Button Content="카테고리별 판매량" x:Name="ChangeChartBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="30" Click="ChangeChartBtn_Click" />
-        </Grid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Background="White">
+            <Button Content="카테고리별 통계" x:Name="CategoryChartBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="30" Click="ChangeChartBtn_Click" />
+            <Button Content="메뉴별 통계" x:Name="MenuChartBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="30" Click="ChangeChartBtn_Click" />
+            <Button Content="결제방식별 통계" x:Name="PaymentChartBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="30" Click="ChangeChartBtn_Click" />
+        </StackPanel>
 
         <Grid Grid.Row="2" Background="White">
             <Grid x:Name="CategoryChartGd" Visibility="Visible">
@@ -57,6 +59,23 @@
                 </chartingToolkit:Chart>
                 <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartStyle}"
                 Name="MenuOrderPriceChart" Title="메뉴별 판매액">
+                    <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
+                    ></chartingToolkit:ColumnSeries>
+                </chartingToolkit:Chart>
+            </Grid>
+            <!-- todo - 이 차트는 세로로 2개 보여주자! -->
+            <Grid x:Name="PaymentChartGd" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <chartingToolkit:Chart Grid.Row="0" Style="{StaticResource ChartStyle}"
+                Name="PaymentOrdersChart" Title="결제방식별 판매량">
+                    <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
+                    ></chartingToolkit:ColumnSeries>
+                </chartingToolkit:Chart>
+                <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartStyle}"
+                Name="PaymentOrderPriceChart" Title="결제방식별 판매액">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>
                 </chartingToolkit:Chart>

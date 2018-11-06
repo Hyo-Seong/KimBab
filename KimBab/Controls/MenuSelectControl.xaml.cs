@@ -196,6 +196,10 @@ namespace KimBab.Controls
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (App.tableViewModel.Items[tableNum].MenuList.Count == 0)
+            {
+                return;
+            }
             //결제를 하기전에 주문은 필수니까.
             Order(Visibility.Visible);
             OnPaymentControlStatusRecieved?.Invoke(null, tableNum);
@@ -226,6 +230,12 @@ namespace KimBab.Controls
 
         private void Order(Visibility visibility)
         {
+
+            App.tableViewModel.SetMenuString(tableNum);
+            if (App.tableViewModel.CheckIsChanged(tableNum))
+            {
+                return;
+            }
             bool isNull;
             if (App.tableViewModel.Items[tableNum].MenuList.Count == 0)
             {
@@ -235,7 +245,6 @@ namespace KimBab.Controls
             {
                 isNull = false;
             }
-            App.tableViewModel.SetMenuString(tableNum);
             App.tableViewModel.SetOrderDateTime(tableNum, isNull);
             this.Visibility = visibility;
         }

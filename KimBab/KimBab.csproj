@@ -102,6 +102,7 @@
       <DependentUpon>TimeControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converter\PaymentTypeConverter.cs" />
+    <Compile Include="Converter\PaymentWayConverter.cs" />
     <Compile Include="Model\Menu.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />

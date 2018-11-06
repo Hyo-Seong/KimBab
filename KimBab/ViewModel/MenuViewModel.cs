@@ -1,5 +1,6 @@
 ﻿using KimBab.Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,6 +11,8 @@ namespace KimBab.ViewModel
     {
         public ObservableCollection<Menu> Items { get; } = new ObservableCollection<Menu>();
 
+        //public List<Menu>  
+        
         public long pepsi = 8801056070809;
         public long coca = 8801094017200;
 
@@ -35,6 +38,7 @@ namespace KimBab.ViewModel
                 {
                     Items[menu.Idx].Orders += menu.Orders;
                     Items[menu.Idx].OrderPrice += menu.Price;
+                    Items[menu.Idx].PaymentMenu = App.tableViewModel.Items[tableNum].PaymentTable;
                 }
                 catch (Exception exception)
                 {

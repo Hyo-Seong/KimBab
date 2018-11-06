@@ -75,7 +75,7 @@ namespace KimBab.ViewModel
                 MenuString = table.MenuString,
                 OrderDateTime = table.OrderDateTime,
                 TotalPrice = table.TotalPrice,
-                Payment = table.Payment,
+                PaymentTable = table.PaymentTable,
             };
         }
 
@@ -132,13 +132,11 @@ namespace KimBab.ViewModel
         public void CancelOrder(int tableNum)
         {
             Items[tableNum] = CopyTable(TempTable);
-            Debug.WriteLine(Items[tableNum].TableNum);
         }
 
         public void ClearList(int tableNum)
         {
             Items[tableNum].MenuList.Clear();
-            Debug.WriteLine("A" + Items[tableNum].TableNum);
             Items[tableNum].TotalPrice = 0;
         }
 
@@ -179,6 +177,15 @@ namespace KimBab.ViewModel
                 timeString += DateTime.Now.ToString();
             }
             Items[tableNum].OrderDateTime = timeString;
+        }
+
+        public bool CheckIsChanged(int tableNum)
+        {
+            if(Items[tableNum].MenuString == TempTable.MenuString)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

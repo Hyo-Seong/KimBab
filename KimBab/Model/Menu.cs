@@ -112,6 +112,19 @@ namespace KimBab.Model
             set
             {
                 barcode = value;
+                NotifyPropertyChanged("Barcode");
+            }
+        }
+
+        private PaymentType paymentMenu;
+
+        public PaymentType PaymentMenu
+        {
+            get => paymentMenu;
+            set
+            {
+                paymentMenu = value;
+                NotifyPropertyChanged("PaymentMenu");
             }
         }
     }

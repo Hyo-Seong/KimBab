@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:KimBab.Controls"
+             xmlns:Converter="clr-namespace:KimBab.Converter"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <Converter:PaymentWayConverter x:Key="PaymentWayConverter"/>
         <Style x:Key="TotalPriceTextBlockStyle" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="FontSize" Value="20" />
@@ -37,10 +39,11 @@
             <Grid Grid.Row="2">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="20,0,0,0" Text="총액 : " Style="{StaticResource TotalPriceTextBlockStyle}" />
-                    <TextBlock Text="{Binding TotalPrice}" Style="{StaticResource TotalPriceTextBlockStyle}" />
-                    <TextBlock Padding="0,0,200,0" Text="원" Style="{StaticResource TotalPriceTextBlockStyle}" />
-                    <Button Content="결제" Click="Button_Click" Style="{StaticResource PaymentButtonStyle}" />
-                    <Button Content="취소" Click="Button_Click" Margin="10,0,0,0" Style="{StaticResource PaymentButtonStyle}" />
+                    <TextBlock Padding="100,0,0,0" Text="{Binding TotalPrice}" Style="{StaticResource TotalPriceTextBlockStyle}" />
+                    <TextBlock Text="원" Style="{StaticResource TotalPriceTextBlockStyle}" Margin="0,7" />
+                    <TextBlock Padding="20,0,0,0" Text="{Binding PaymentTable, Converter={StaticResource PaymentWayConverter}}" Style="{StaticResource TotalPriceTextBlockStyle}" Margin="0,7" Width="100" />
+                    <Button Content="결제" Click="Button_Click" Margin="10,0,0,0" Style="{StaticResource PaymentButtonStyle}" />
+                    <Button Content="취소" Click="Button_Click" Margin="10,8,0,8" Style="{StaticResource PaymentButtonStyle}" HorizontalAlignment="Right" />
                 </StackPanel>
             </Grid>
         </Grid>

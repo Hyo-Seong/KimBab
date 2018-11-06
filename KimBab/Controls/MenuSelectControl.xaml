@@ -83,10 +83,10 @@
                     <Image Grid.Column="0" x:Name="SelectedMenuImage" Stretch="UniformToFill" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="598" Margin="0,10,0,0" />
                     <StackPanel Grid.Column="1">
                         <Viewbox Height="50">
-                            <RadioButton GroupName="payment" Content="현금결제" IsChecked="{Binding Payment, Converter={StaticResource PaymentTypeConverter}, ConverterParameter=CASH}"/>
+                            <RadioButton GroupName="payment" Content="현금결제" IsChecked="{Binding PaymentTable, Converter={StaticResource PaymentTypeConverter}, ConverterParameter=CASH}"/>
                         </Viewbox>
                         <Viewbox Height="50">
-                            <RadioButton GroupName="payment" Content="카드결제" IsChecked="{Binding Payment, Converter={StaticResource PaymentTypeConverter}, ConverterParameter=CARD}"/>
+                            <RadioButton GroupName="payment" Content="카드결제" IsChecked="true"/>
                         </Viewbox>
                     </StackPanel>    
                 </Grid>
