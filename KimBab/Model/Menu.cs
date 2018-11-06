@@ -104,9 +104,9 @@ namespace KimBab.Model
             }
         }
 
-        private int barcode;
+        private long barcode;
 
-        public int Barcode
+        public long Barcode
         {
             get => barcode;
             set

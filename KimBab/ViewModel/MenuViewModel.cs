@@ -10,6 +10,9 @@ namespace KimBab.ViewModel
     {
         public ObservableCollection<Menu> Items { get; } = new ObservableCollection<Menu>();
 
+        public long pepsi = 8801056070809;
+        public long coca = 8801094017200;
+
         private bool IsDataLoaded { get; set; }
 
         public MenuViewModel()
@@ -87,8 +90,8 @@ namespace KimBab.ViewModel
             Items.Add(new Menu { Name = "치즈돈까스", Price = 5500, Type = FoodType.DONGAS });
             Items.Add(new Menu { Name = "고구마돈까스", Price = 6000, Type = FoodType.DONGAS });
 
-            Items.Add(new Menu { Name = "펩시", Price = 800, Type = FoodType.DRINK, Barcode = 0 });
-            Items.Add(new Menu { Name = "코카콜라", Price = 2000, Type = FoodType.DRINK, Barcode = 0 });
+            Items.Add(new Menu { Name = "펩시", Price = 800, Type = FoodType.DRINK, Barcode = 8801056070809 });
+            Items.Add(new Menu { Name = "코카콜라", Price = 2000, Type = FoodType.DRINK, Barcode = 8801094017200 });
             SetIdx();
         }
 

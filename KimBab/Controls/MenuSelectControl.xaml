@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KimBab.Controls"
         d:DesignHeight="1080"
-        mc:Ignorable="d" Width="1588.8">
+        mc:Ignorable="d" Width="1588.8" Loaded="UserControl_Loaded">
 
     <UserControl.Resources>
         <Style x:Key="CategoryTitleStyle" TargetType="Button">
-            <Setter Property="Padding" Value="25,0,25,0" />
+            <Setter Property="Padding" Value="20,0,20,0" />
             <Setter Property="FontSize" Value="25" />
             <Setter Property="Height" Value="60" />
-            <Setter Property="Margin" Value="15,14,0,13" />
+            <Setter Property="Margin" Value="8,14,0,13" />
         </Style>
         <Style x:Key="MenuListTextBlockStyle" TargetType="TextBlock">
             <Setter Property="Background" Value="Black" />
@@ -88,6 +88,7 @@
                     <Button x:Name="SiksaBtn" Click="Menu_Click" Content="식사" Style="{StaticResource CategoryTitleStyle}" />
                     <Button x:Name="BunsikBtn" Click="Menu_Click" Content="분식" Style="{StaticResource CategoryTitleStyle}" />
                     <Button x:Name="DongasBtn" Click="Menu_Click" Content="돈가스" Style="{StaticResource CategoryTitleStyle}" />
+                    <Button x:Name="DrinkBtn" Click="Menu_Click" Content="음료" Style="{StaticResource CategoryTitleStyle}" />
                 </StackPanel>
                 <ListView x:Name="MenuList" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="25" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0.2,0,0" MouseLeftButtonUp="MenuList_MouseLeftButtonUp">
                     <ListView.ItemsPanel>

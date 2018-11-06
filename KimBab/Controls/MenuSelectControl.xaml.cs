@@ -24,6 +24,8 @@ namespace KimBab.Controls
         private int menuListMouseDownIndex;
         private int menuListMouseUpIndex;
 
+        private string barcode;
+
         public delegate void hideControlHandler();
 
         public event hideControlHandler HideControl;
@@ -76,7 +78,9 @@ namespace KimBab.Controls
                 case "DongasBtn":
                     foodType = FoodType.DONGAS;
                     break;
-
+                case "DrinkBtn":
+                    foodType = FoodType.DRINK;
+                    break;
                 case "AllBtn":
                     MenuList.ItemsSource = App.menuViewModel.Items;
                     return;
@@ -227,6 +231,45 @@ namespace KimBab.Controls
             App.tableViewModel.SetMenuString(tableNum);
             App.tableViewModel.SetOrderDateTime(tableNum, isNull);
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void HandleKeyPress(object sender, KeyEventArgs e)
+        {
+            if(this.Visibility != Visibility.Visible)
+            {
+                return;
+            }
+            try
+            {
+                string temp = e.Key.ToString();
+                if (e.Key.ToString() == "Return")
+                {
+                    CheckBarcode(barcode.Substring(barcode.Length - 13));
+                    barcode = "";
+                }
+                temp = temp.Replace("NumPad", string.Empty);
+                temp = temp.Replace("D", string.Empty);
+                barcode += temp;
+            } catch
+            {
+                barcode = "";
+            }
+        }
+
+        private void CheckBarcode(string drink)
+        {
+            Debug.WriteLine(drink);
+            if(App.menuViewModel.pepsi.ToString() == drink || App.menuViewModel.coca.ToString() == drink)
+            {
+
+            }
+        }
+
+        // https://stackoverflow.com/questions/347724/how-can-i-capture-keydown-event-on-a-wpf-page-or-usercontrol-object
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            var window = Window.GetWindow(this);
+            window.KeyDown += HandleKeyPress;
         }
     }
 }
