@@ -50,6 +50,7 @@ namespace KimBab.Controls
             PaymentListView.ItemsSource = App.tableViewModel.Items[tableNum].MenuList;
             this.DataContext = App.tableViewModel.Items[tableNum];
             TableNumLabel.Content = (tableNum + 1) + "번 테이블";
+            SelectedMenuImage.Source = null;
         }
 
         private void Menu_Click(object sender, RoutedEventArgs e)
@@ -224,13 +225,11 @@ namespace KimBab.Controls
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            //메인화면으로 돌아가기, 주문시간 표시하기
             Order(Visibility.Collapsed);
         }
 
         private void Order(Visibility visibility)
         {
-
             App.tableViewModel.SetMenuString(tableNum);
             if (App.tableViewModel.CheckIsChanged(tableNum))
             {
@@ -257,17 +256,15 @@ namespace KimBab.Controls
             }
             try
             {
-                string temp = e.Key.ToString();
-                if (e.Key.ToString() == "Return")
+                if (e.Key == Key.Return)
                 {
                     CheckBarcode(barcode.Substring(barcode.Length - 13));
                     barcode = "";
                 }
-                temp = temp.Replace("NumPad", string.Empty);
-                temp = temp.Replace("D", string.Empty);
-                barcode += temp;
-            } catch
+                barcode += e.Key.ToString().Replace("D", string.Empty);
+            } catch (Exception exception)
             {
+                Debug.WriteLine(exception.Message);
                 barcode = "";
             }
         }
@@ -282,7 +279,6 @@ namespace KimBab.Controls
                     MenuList.SelectedIndex = i;
                     menuListMouseDownIndex = i;
                     MenuList_MouseLeftButtonUp(null, null);
-
                 }
             }
         }

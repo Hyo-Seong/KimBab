@@ -1,6 +1,4 @@
-﻿#define DEBUG
-
-using System;
+﻿using System;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
@@ -11,7 +9,7 @@ namespace KimBab.Controls
     /// </summary>
     public partial class LoadingControl : UserControl
     {
-        private const int timerInterval = 1; //TODO: 제출전에 30으로 수정해야됨.
+        private const int timerInterval = 30;
 
         public delegate void loadingEndRecievedHandler();
 
@@ -34,14 +32,11 @@ namespace KimBab.Controls
         private void Timer_Tick(object sender, object e)
         {
             LoadingProgressBar.Value++;
-#if DEBUG
-            LoadingEndRecieved?.Invoke();
-#else
+            // LoadingEndRecieved?.Invoke();
             if (LoadingProgressBar.Value >= LoadingProgressBar.Maximum)
             {
                 LoadingEndRecieved?.Invoke();
             }
-#endif
         }
     }
 }

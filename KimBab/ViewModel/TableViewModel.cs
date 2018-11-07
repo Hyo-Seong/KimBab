@@ -33,7 +33,7 @@ namespace KimBab.ViewModel
         public void AddStatistics(int tableNum)
         {
             statistics.Add(CopyTable(Items[tableNum]));
-            App.tableViewModel.ClearTable(tableNum);
+            ClearTable(tableNum);
         }
 
         public void AddOrderMenu(int tableNum, Menu menu)
@@ -107,7 +107,7 @@ namespace KimBab.ViewModel
             Items[tableNum].MenuList.Clear();
             Items[tableNum].TotalPrice = 0;
             Items[tableNum].MenuString = "";
-            Items[tableNum].OrderDateTime = "";
+            Items[tableNum].OrderDateTime = "주문시간 : ";
         }
 
         private void SortMenuList(int tableNum)
