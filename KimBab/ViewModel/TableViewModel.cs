@@ -11,6 +11,8 @@ namespace KimBab.ViewModel
     {
         public ObservableCollection<Table> Items { get; set; }
 
+        public List<Table> statistics = new List<Table>();
+
         public Table TempTable;
 
         private bool IsDataLoaded { get; set; }
@@ -26,6 +28,12 @@ namespace KimBab.ViewModel
         private void NotifyPropertyChanged(String propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void AddStatistics(int tableNum)
+        {
+            statistics.Add(CopyTable(Items[tableNum]));
+            App.tableViewModel.ClearTable(tableNum);
         }
 
         public void AddOrderMenu(int tableNum, Menu menu)
@@ -75,7 +83,7 @@ namespace KimBab.ViewModel
                 MenuString = table.MenuString,
                 OrderDateTime = table.OrderDateTime,
                 TotalPrice = table.TotalPrice,
-                PaymentTable = table.PaymentTable,
+                Payment = table.Payment,
             };
         }
 

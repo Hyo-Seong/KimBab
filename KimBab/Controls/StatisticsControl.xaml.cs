@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using Menu = KimBab.Model.Menu;
 
 namespace KimBab.Controls
 {
@@ -19,9 +20,11 @@ namespace KimBab.Controls
         private List<KeyValuePair<string, int>> PaymentOrdersChartList = new List<KeyValuePair<string, int>>();     //  결제방식별 판매액
         private List<KeyValuePair<string, int>> PaymentOrderPriceChartList = new List<KeyValuePair<string, int>>(); //  결제방식별 판매략
 
-        List<CategoryCount> paymentCountList = new List<CategoryCount>(); // 결제방식별 통계 temp list
-        List<CategoryCount> typeCountList = new List<CategoryCount>(); // 카테고리별 통계 temp list
+        List<CategoryCount> menuCountList = new List<CategoryCount>();    //  메뉴별 통계 temp list
+        List<CategoryCount> paymentCountList = new List<CategoryCount>(); //  결제방식별 통계 temp list
+        List<CategoryCount> typeCountList = new List<CategoryCount>();    //  카테고리별 통계 temp list
 
+        private const int MENU_COUNT = 32;
         private const int FOODTYPE_COUNT = 6;
         private const int PAYMENTTYPE_COUNT = 2;
 
@@ -37,64 +40,93 @@ namespace KimBab.Controls
         public void UpdateChart()
         {
             InitList();
-            
-            foreach (Model.Menu menu in App.menuViewModel.Items)
-            {
-                MenuOrdersChartList.Add(new KeyValuePair<string, int>(menu.Name, menu.Orders)); // 메뉴별 판매량 통계
-                MenuOrderPriceChartList.Add(new KeyValuePair<string, int>(menu.Name, menu.OrderPrice)); // 메뉴별 판매액 통계
 
-                int paymentIdx = 0; // CASH : 0, CARD : 1
-
-                if(menu.PaymentMenu == PaymentType.CARD)
+            for(int i=0; i<App.tableViewModel.statistics.Count; i++){
+                foreach(Menu menu in App.tableViewModel.statistics[i].MenuList)
                 {
-                    paymentIdx = 1;
+                    int pType = 0;
+                    int categoryIdx = 0;
+
+                    menuCountList[menu.Idx].Orders += menu.Orders;
+                    menuCountList[menu.Idx].OrderPrice += menu.OrderPrice;
+
+                    switch (menu.Type.ToString()) // 카테고리별 통계
+                    {
+                        case "KIMBAB":
+                            categoryIdx = 0;
+                            break;
+
+                        case "NOODLE":
+                            categoryIdx = 1;
+                            break;
+
+                        case "SIKSA":
+                            categoryIdx = 2;
+                            break;
+
+                        case "BUNSIK":
+                            categoryIdx = 3;
+                            break;
+
+                        case "DONGAS":
+                            categoryIdx = 4;
+                            break;
+                        case "DRINK":
+                            categoryIdx = 5;
+                            break;
+                    }
+                    typeCountList[categoryIdx].Orders += menu.Orders;
+                    typeCountList[categoryIdx].OrderPrice += menu.OrderPrice;
+
+                    if (App.tableViewModel.statistics[i].Payment == PaymentType.CASH)
+                    {
+                        pType = 0; // CASH
+                    }
+                    else
+                    {
+                        pType = 1; // CARD
+                    }
+                    paymentCountList[pType].Orders += menu.Orders;
+                    paymentCountList[pType].OrderPrice += menu.OrderPrice;
                 }
-
-                int categoryIdx = 0;
-                switch (menu.Type.ToString()) // 카테고리별 통계
-                {
-                    case "KIMBAB":
-                        categoryIdx = 0;
-                        break;
-
-                    case "NOODLE":
-                        categoryIdx = 1;
-                        break;
-
-                    case "SIKSA":
-                        categoryIdx = 2;
-                        break;
-
-                    case "BUNSIK":
-                        categoryIdx = 3;
-                        break;
-
-                    case "DONGAS":
-                        categoryIdx = 4;
-                        break;
-                    case "DRINK":
-                        categoryIdx = 5;
-                        break;
-                }
-                typeCountList[categoryIdx].Orders += menu.Orders;
-                typeCountList[categoryIdx].OrderPrice += menu.OrderPrice;
-
-                paymentCountList[paymentIdx].Orders += menu.Orders;
-                paymentCountList[paymentIdx].OrderPrice += menu.OrderPrice;
             }
-            SetPaymentList(paymentCountList);
-            SetCategoryList(typeCountList);
-
+            SetList();
 
             SetChartDataContext();
+
+        }
+
+        private void SetList()
+        {
+            SetMenuList(menuCountList);
+            SetPaymentList(paymentCountList);
+            SetCategoryList(typeCountList);
+        }
+
+        private void SetMenuList(List<CategoryCount> menuCountList)
+        {
+            for (int i = 0; i < MENU_COUNT; i++)
+            {
+                MenuOrdersChartList.Add(new KeyValuePair<string, int>(App.menuViewModel.Items[i].Name, menuCountList[i].Orders));
+                MenuOrderPriceChartList.Add(new KeyValuePair<string, int>(App.menuViewModel.Items[i].Name, menuCountList[i].OrderPrice));
+            }
         }
 
         private void SetPaymentList(List<CategoryCount> paymentCountList)
         {
             for(int i=0; i<PAYMENTTYPE_COUNT; i++)
             {
-                PaymentOrdersChartList.Add(new KeyValuePair<string, int>("" + (PaymentType)i, paymentCountList[i].OrderPrice));
-                PaymentOrderPriceChartList.Add(new KeyValuePair<string, int>("" + (PaymentType)i, paymentCountList[i].Orders));
+                PaymentOrdersChartList.Add(new KeyValuePair<string, int>("" + (PaymentType)i, paymentCountList[i].Orders));
+                PaymentOrderPriceChartList.Add(new KeyValuePair<string, int>("" + (PaymentType)i, paymentCountList[i].OrderPrice));
+            }
+        }
+
+        private void SetCategoryList(List<CategoryCount> typeCountList)
+        {
+            for (int i = 0; i < FOODTYPE_COUNT; i++)
+            {
+                CategoryOrderPriceChartList.Add(new KeyValuePair<string, int>("" + (FoodType)i, typeCountList[i].OrderPrice));
+                CategoryOrdersChartList.Add(new KeyValuePair<string, int>("" + (FoodType)i, typeCountList[i].Orders));
             }
         }
 
@@ -117,23 +149,6 @@ namespace KimBab.Controls
         }
         #endregion
 
-        private void InitTypeCountList()
-        {
-            for(int i = 0; i<FOODTYPE_COUNT; i++)
-            {
-                typeCountList.Add(new CategoryCount { Orders = 0, OrderPrice = 0 });
-            }
-        }
-
-        private void SetCategoryList(List<CategoryCount> typeCountList)
-        {
-            for(int i = 0; i<FOODTYPE_COUNT; i++)
-            {
-                CategoryOrderPriceChartList.Add(new KeyValuePair<string, int>("" + (FoodType)i, typeCountList[i].OrderPrice));
-                CategoryOrdersChartList.Add(new KeyValuePair<string, int>("" + (FoodType)i, typeCountList[i].Orders));
-            }
-        }
-
         private void InitList()
         {
             CategoryOrdersChartList.Clear();
@@ -143,17 +158,28 @@ namespace KimBab.Controls
             PaymentOrdersChartList.Clear();
             PaymentOrderPriceChartList.Clear();
 
+            menuCountList.Clear();
             typeCountList.Clear();
+            paymentCountList.Clear();
 
-            InitPaymentCountList();
-            InitTypeCountList();
+            InitCountList();
         }
 
-        private void InitPaymentCountList()
+        private void InitCountList()
         {
-            for(int i = 0; i < PAYMENTTYPE_COUNT; i++)
+            for(int i = 0; i < MENU_COUNT; i++)
+            {
+                menuCountList.Add(new CategoryCount { OrderPrice = 0, Orders = 0 });
+            }
+
+            for (int i = 0; i < PAYMENTTYPE_COUNT; i++) // Init PaymentCountList
             {
                 paymentCountList.Add(new CategoryCount { OrderPrice = 0, Orders = 0 });
+            }
+
+            for (int i = 0; i < FOODTYPE_COUNT; i++) // Init TypeCountList
+            {
+                typeCountList.Add(new CategoryCount { Orders = 0, OrderPrice = 0 });
             }
         }
 

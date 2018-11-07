@@ -115,17 +115,5 @@ namespace KimBab.Model
                 NotifyPropertyChanged("Barcode");
             }
         }
-
-        private PaymentType paymentMenu;
-
-        public PaymentType PaymentMenu
-        {
-            get => paymentMenu;
-            set
-            {
-                paymentMenu = value;
-                NotifyPropertyChanged("PaymentMenu");
-            }
-        }
     }
 }

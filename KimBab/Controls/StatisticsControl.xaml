@@ -8,13 +8,22 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <Style x:Key="ChartStyle" TargetType="chartingToolkit:Chart">
+        <Style x:Key="ChartRowStyle" TargetType="chartingToolkit:Chart">
             <Setter Property="Height" Value="350" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="FontSize" Value="10" />
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="Margin" Value="10,0,0,0" />
             <Setter Property="Width" Value="1560" />
+        </Style>
+
+        <Style x:Key="ChartColumnStyle" TargetType="chartingToolkit:Chart">
+            <Setter Property="Height" Value="750" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Margin" Value="10,0,0,0" />
+            <Setter Property="Width" Value="780" />
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -31,16 +40,16 @@
 
         <Grid Grid.Row="2" Background="White">
             <Grid x:Name="CategoryChartGd" Visibility="Visible">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <chartingToolkit:Chart Grid.Row="0" Style="{StaticResource ChartStyle}"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <chartingToolkit:Chart Grid.Column="0" Style="{StaticResource ChartColumnStyle}"
                 Name="CategoryOrdersChart" Title="카테고리별 판매량">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>
                 </chartingToolkit:Chart>
-                <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartStyle}"
+                <chartingToolkit:Chart Grid.Column="1" Style="{StaticResource ChartColumnStyle}"
                 Name="CategoryOrderPriceChart" Title="카테고리별 판매액">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>
@@ -52,12 +61,12 @@
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
-                <chartingToolkit:Chart Grid.Row="0" Style="{StaticResource ChartStyle}"
+                <chartingToolkit:Chart Grid.Row="0" Style="{StaticResource ChartRowStyle}"
                 Name="MenuOrdersChart" Title="메뉴별 판매량">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>
                 </chartingToolkit:Chart>
-                <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartStyle}"
+                <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartRowStyle}"
                 Name="MenuOrderPriceChart" Title="메뉴별 판매액">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>
@@ -65,16 +74,16 @@
             </Grid>
             <!-- todo - 이 차트는 세로로 2개 보여주자! -->
             <Grid x:Name="PaymentChartGd" Visibility="Collapsed">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <chartingToolkit:Chart Grid.Row="0" Style="{StaticResource ChartStyle}"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <chartingToolkit:Chart Grid.Column="0" Style="{StaticResource ChartColumnStyle}"
                 Name="PaymentOrdersChart" Title="결제방식별 판매량">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>
                 </chartingToolkit:Chart>
-                <chartingToolkit:Chart Grid.Row="1" Style="{StaticResource ChartStyle}"
+                <chartingToolkit:Chart Grid.Column="1" Style="{StaticResource ChartColumnStyle}"
                 Name="PaymentOrderPriceChart" Title="결제방식별 판매액">
                     <chartingToolkit:ColumnSeries DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}"
                     ></chartingToolkit:ColumnSeries>

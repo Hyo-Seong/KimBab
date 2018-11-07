@@ -41,7 +41,7 @@
                     <TextBlock Margin="20,0,0,0" Text="총액 : " Style="{StaticResource TotalPriceTextBlockStyle}" />
                     <TextBlock Padding="100,0,0,0" Text="{Binding TotalPrice}" Style="{StaticResource TotalPriceTextBlockStyle}" />
                     <TextBlock Text="원" Style="{StaticResource TotalPriceTextBlockStyle}" Margin="0,7" />
-                    <TextBlock Padding="20,0,0,0" Text="{Binding PaymentTable, Converter={StaticResource PaymentWayConverter}}" Style="{StaticResource TotalPriceTextBlockStyle}" Margin="0,7" Width="100" />
+                    <TextBlock Padding="20,0,0,0" Text="{Binding Payment, Converter={StaticResource PaymentWayConverter}}" Style="{StaticResource TotalPriceTextBlockStyle}" Margin="0,7" Width="100" />
                     <Button Content="결제" Click="Button_Click" Margin="10,0,0,0" Style="{StaticResource PaymentButtonStyle}" />
                     <Button Content="취소" Click="Button_Click" Margin="10,8,0,8" Style="{StaticResource PaymentButtonStyle}" HorizontalAlignment="Right" />
                 </StackPanel>

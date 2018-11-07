@@ -30,23 +30,22 @@ namespace KimBab.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void AddStatistics(int tableNum)
-        {
-            foreach (Menu menu in App.tableViewModel.Items[tableNum].MenuList)
-            {
-                try
-                {
-                    Items[menu.Idx].Orders += menu.Orders;
-                    Items[menu.Idx].OrderPrice += menu.Price;
-                    Items[menu.Idx].PaymentMenu = App.tableViewModel.Items[tableNum].PaymentTable;
-                }
-                catch (Exception exception)
-                {
-                    Debug.WriteLine(exception.Message);
-                }
-            }
-            App.tableViewModel.ClearTable(tableNum);
-        }
+        //public void AddStatistics(int tableNum)
+        //{
+        //    foreach (Menu menu in App.tableViewModel.Items[tableNum].MenuList)
+        //    {
+        //        try
+        //        {
+        //            Items[menu.Idx].Orders += menu.Orders;
+        //            Items[menu.Idx].OrderPrice += menu.Price;
+        //        }
+        //        catch (Exception exception)
+        //        {
+        //            Debug.WriteLine(exception.Message);
+        //        }
+        //    }
+        //    App.tableViewModel.ClearTable(tableNum);
+        //}
 
         private Menu CopyMenu(Menu menu)
         {

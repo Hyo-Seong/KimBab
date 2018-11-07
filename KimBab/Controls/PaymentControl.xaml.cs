@@ -25,7 +25,7 @@ namespace KimBab.Controls
             Button button = sender as Button;
             if (button.Content.Equals("결제"))
             {
-                App.menuViewModel.AddStatistics(tableNum);
+                App.tableViewModel.AddStatistics(tableNum);
                 onChangeVisible?.Invoke(Visibility.Collapsed);
             }
             else

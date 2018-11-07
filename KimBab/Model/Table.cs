@@ -77,20 +77,20 @@ namespace KimBab.Model
             }
         }
 
-        private PaymentType paymentTable;
-        public PaymentType PaymentTable
+        private PaymentType payment;
+        public PaymentType Payment
         {
-            get => paymentTable;
+            get => payment;
             set
             {
-                paymentTable = value;
-                NotifyPropertyChanged("PaymentTable");
+                payment = value;
+                NotifyPropertyChanged("Payment");
             }
         }
 
         public Table(int TableNum)
         {
-            PaymentTable = PaymentType.CASH;
+            Payment = PaymentType.CASH;
             this.TableNum = TableNum;
             MenuList = new List<Menu>();
         }
