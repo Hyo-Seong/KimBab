@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace KimBab.ViewModel
 {
-    public class MenuViewModel : INotifyPropertyChanged
+    public class MenuViewModel
     {
         public ObservableCollection<Menu> Items { get; } = new ObservableCollection<Menu>();
 
@@ -22,30 +22,6 @@ namespace KimBab.ViewModel
         {
             LoadData();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        //public void AddStatistics(int tableNum)
-        //{
-        //    foreach (Menu menu in App.tableViewModel.Items[tableNum].MenuList)
-        //    {
-        //        try
-        //        {
-        //            Items[menu.Idx].Orders += menu.Orders;
-        //            Items[menu.Idx].OrderPrice += menu.Price;
-        //        }
-        //        catch (Exception exception)
-        //        {
-        //            Debug.WriteLine(exception.Message);
-        //        }
-        //    }
-        //    App.tableViewModel.ClearTable(tableNum);
-        //}
 
         private Menu CopyMenu(Menu menu)
         {

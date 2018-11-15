@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace KimBab.ViewModel
 {
-    public class TableViewModel : INotifyPropertyChanged
+    public class TableViewModel
     {
         public ObservableCollection<Table> Items { get; set; }
 
@@ -21,13 +21,6 @@ namespace KimBab.ViewModel
         {
             Items = new ObservableCollection<Table>();
             LoadData();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void AddStatistics(int tableNum)
@@ -62,10 +55,8 @@ namespace KimBab.ViewModel
 
         public void SetTempItems(int tableNum)
         {
-            
-            TempTable = new Table(); // 이게되나? 같이 변하던데
-            //TempTable.MenuList = Items[tableNum].MenuList; // 이렇게하면 되려나..?
-            TempTable = CopyTable(Items[tableNum]); // 이게되나? 같이 변하던데
+            TempTable = new Table(); 
+            TempTable = CopyTable(Items[tableNum]);
         }
 
         private Table CopyTable(Table table)
@@ -133,7 +124,6 @@ namespace KimBab.ViewModel
         public void CancelMenu(int tableNum, int selectedIndex)
         {
             Items[tableNum].TotalPrice -= Items[tableNum].MenuList[selectedIndex].OrderPrice;
-            //totalprice 설정
             Items[tableNum].MenuList.RemoveAt(selectedIndex);
         }
 

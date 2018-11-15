@@ -63,7 +63,6 @@ namespace KimBab
                 selectTable = TableListView.SelectedItem as Table;
                 MenuSelectControl.SetItemIndex(selectTable.TableNum - 1);
                 MenuSelectControl.Visibility = Visibility.Visible;
-                //TableListView.SelectedIndex = -1;
             }
             catch
             {
