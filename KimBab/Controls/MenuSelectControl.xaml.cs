@@ -119,15 +119,11 @@ namespace KimBab.Controls
                 return;
             }
 
-            Menu menu;
+            
             try
             {
-                menu = MenuList.SelectedItem as Menu;
-                BitmapImage logo = new BitmapImage();
-                logo.BeginInit();
-                logo.UriSource = new Uri(menu.Image);
-                logo.EndInit();
-                SelectedMenuImage.Source = logo;
+                Menu menu = MenuList.SelectedItem as Menu;
+                SelectedMenuImage.Source = SetImageSource(menu.Image);
 
                 App.tableViewModel.AddOrderMenu(tableNum, menu);
                 PaymentListView.ItemsSource = null;
@@ -206,16 +202,21 @@ namespace KimBab.Controls
             OnPaymentControlStatusRecieved?.Invoke(null, tableNum);
         }
 
+        private BitmapImage SetImageSource(string imagePath)
+        {
+            BitmapImage logo = new BitmapImage();
+            logo.BeginInit();
+            logo.UriSource = new Uri(imagePath);
+            logo.EndInit();
+            return logo;
+        }
+
         private void PaymentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 Menu menu = PaymentListView.SelectedItem as Menu;
-                BitmapImage logo = new BitmapImage();
-                logo.BeginInit();
-                logo.UriSource = new Uri(menu.Image);
-                logo.EndInit();
-                SelectedMenuImage.Source = logo;
+                SelectedMenuImage.Source = SetImageSource(menu.Image);
             }
             catch (Exception exception)
             {
