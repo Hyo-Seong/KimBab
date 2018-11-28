@@ -42,16 +42,16 @@ namespace KimBab.ViewModel
                         return;
                     }
                 }
+				Items[tableNum].MenuList.Add(CopyMenu(menu));
 
-            }
+				Items[tableNum].TotalPrice += menu.Price;
+				SortMenuList(tableNum);
+			}
             catch (Exception exception)
             {
                 Debug.WriteLine(exception.Message);
             }
-            Items[tableNum].MenuList.Add(CopyMenu(menu));
 
-            Items[tableNum].TotalPrice += menu.Price;
-            SortMenuList(tableNum);
         }
 
         public void SetTempItems(int tableNum)
