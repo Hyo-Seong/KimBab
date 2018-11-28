@@ -28,7 +28,7 @@ namespace KimBab.Controls
 
         public delegate void hideControlHandler();
 
-        public event hideControlHandler HideControl;
+        public event hideControlHandler OnHideControlRecieved;
         
 
         public MenuSelectControl()
@@ -103,7 +103,7 @@ namespace KimBab.Controls
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)
         {
             App.tableViewModel.CancelOrder(tableNum);
-            HideControl?.Invoke();
+            OnHideControlRecieved?.Invoke();
         }
 
         private void MenuList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -250,7 +250,7 @@ namespace KimBab.Controls
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
-        {
+		{
             if(this.Visibility != Visibility.Visible)
             {
                 return;

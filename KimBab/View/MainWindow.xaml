@@ -58,7 +58,7 @@
         </Grid>
 
         <Grid x:Name="gdMenuSelect">
-            <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" HideControl="MenuSelectControl_HideControl" OnPaymentControlStatusRecieved="MenuSelectControl_OnPaymentControlStatusRecieved" />
+            <ctrl:MenuSelectControl x:Name="MenuSelectControl" Visibility="Collapsed" OnHideControlRecieved="MenuSelectControl_HideControl" OnPaymentControlStatusRecieved="MenuSelectControl_OnPaymentControlStatusRecieved" />
             <ctrl:StatisticsControl x:Name="StatisticsControl" Visibility="Collapsed" />
             <ctrl:PaymentControl x:Name="PaymentControl" Visibility="Hidden" onChangeVisible="PaymentControl_onChangeVisible" />
         </Grid>

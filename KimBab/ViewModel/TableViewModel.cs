@@ -42,6 +42,7 @@ namespace KimBab.ViewModel
                         return;
                     }
                 }
+
             }
             catch (Exception exception)
             {
