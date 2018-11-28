@@ -51,7 +51,9 @@ namespace KimBab.Controls
             this.DataContext = App.tableViewModel.Items[tableNum];
             TableNumLabel.Content = (tableNum + 1) + "번 테이블";
             SelectedMenuImage.Source = null;
-        }
+			var window = Window.GetWindow(this);
+			window.KeyDown += HandleKeyPress;
+		}
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
@@ -198,7 +200,7 @@ namespace KimBab.Controls
                 return;
             }
             //결제를 하기전에 주문은 필수니까.
-            Order(Visibility.Visible);
+            SetOrderVisibillity(Visibility.Visible);
             OnPaymentControlStatusRecieved?.Invoke(null, tableNum);
         }
 
@@ -226,10 +228,10 @@ namespace KimBab.Controls
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            Order(Visibility.Collapsed);
+            SetOrderVisibillity(Visibility.Collapsed);
         }
 
-        private void Order(Visibility visibility)
+        private void SetOrderVisibillity(Visibility visibility)
         {
             App.tableViewModel.SetMenuString(tableNum);
             if (App.tableViewModel.CheckIsChanged(tableNum))
@@ -285,10 +287,5 @@ namespace KimBab.Controls
         }
 
         // https://stackoverflow.com/questions/347724/how-can-i-capture-keydown-event-on-a-wpf-page-or-usercontrol-object
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            var window = Window.GetWindow(this);
-            window.KeyDown += HandleKeyPress;
-        }
     }
 }
