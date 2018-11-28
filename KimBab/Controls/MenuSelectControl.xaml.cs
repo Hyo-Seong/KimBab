@@ -275,7 +275,7 @@ namespace KimBab.Controls
             for(int i=0;i<MenuList.Items.Count; i++)
             {
                 Menu menu = MenuList.Items[i] as Menu;
-                if (menu.Barcode.ToString() == barcodeStr)
+                if (menu.Barcode == barcodeStr)
                 {
                     MenuList.SelectedIndex = i;
                     menuListMouseDownIndex = i;

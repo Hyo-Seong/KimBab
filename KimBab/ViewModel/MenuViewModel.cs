@@ -13,8 +13,8 @@ namespace KimBab.ViewModel
 
         //public List<Menu>  
         
-        public long pepsi = 8801056070809;
-        public long coca = 8801094017200;
+        public string pepsi = "8801056070809";
+        public string coca = "8801094017200";
 
         private bool IsDataLoaded { get; set; }
 
@@ -70,8 +70,8 @@ namespace KimBab.ViewModel
             Items.Add(new Menu { Name = "치즈돈까스", Price = 5500, Type = FoodType.DONGAS });
             Items.Add(new Menu { Name = "고구마돈까스", Price = 6000, Type = FoodType.DONGAS });
 
-            Items.Add(new Menu { Name = "펩시", Price = 800, Type = FoodType.DRINK, Barcode = 8801056070809 });
-            Items.Add(new Menu { Name = "코카콜라", Price = 2000, Type = FoodType.DRINK, Barcode = 8801094017200 });
+            Items.Add(new Menu { Name = "펩시", Price = 800, Type = FoodType.DRINK, Barcode = pepsi });
+            Items.Add(new Menu { Name = "코카콜라", Price = 2000, Type = FoodType.DRINK, Barcode = coca });
             SetIdx();
         }
 
